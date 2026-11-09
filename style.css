@@ -178,7 +178,7 @@ footer a{color:#d0d0d8;text-decoration:none}
 /* 모바일 하단 고정 상담 */
 .mbar{display:none}
 @media (max-width:760px){
-  .mbar{display:grid;grid-template-columns:1fr 1fr;position:fixed;left:0;right:0;bottom:0;z-index:30;box-shadow:0 -6px 20px rgba(0,0,0,.12)}
+  .mbar{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;position:fixed;left:0;right:0;bottom:0;z-index:30;box-shadow:0 -6px 20px rgba(0,0,0,.12)}
   .mbar a{text-align:center;padding:15px 8px;font-weight:800;text-decoration:none;font-size:16px}
   .mbar a:first-child{background:var(--brand);color:#fff}
   .mbar a:last-child{background:#fee500;color:#191919}

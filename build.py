@@ -7,7 +7,7 @@
   2) 아래 SERVICES 에 한 줄 추가 → python build.py
      → 첫 화면·부가서비스 목록의 카드와 메뉴 표시가 자동으로 붙음
 """
-import json, os, datetime, html as H
+import json, os, re, datetime, html as H
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 
@@ -69,6 +69,11 @@ def main():
             f'      <a href="{f}"{cur if g and g == grp else ""}>{m}</a>' for f, g, m in NAV)
         body = open(os.path.join(ROOT, "src", fn), encoding="utf-8").read()
         html = layout.replace("{{BODY}}", body).replace("{{NAV}}", nav).replace("{{SERVICE_CARDS}}", cards)
+        # site.json 에서 비워 둔 항목은 화면에서 뺌 (카카오톡 링크·사업자번호는 받으면 채우기)
+        if not site.get("KAKAO"):
+            html = re.sub(r'\s*<a[^>]*href="\{\{KAKAO\}\}"[^>]*>[^<]*</a>', "", html)
+        if not site.get("BIZNO"):
+            html = re.sub(r'<span>사업자등록번호 \{\{BIZNO\}\}</span>', "", html)
         vals = dict(site, TITLE=title, DESC=desc, CONTACT_TITLE=ctitle,
                     FILE_URL="" if fn == "index.html" else fn)
         for k, v in vals.items():
