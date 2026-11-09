@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://kg070tel-ux.github.io/sitemap.xml
