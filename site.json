@@ -1,11 +1,12 @@
 {
-  "TEL": "031-000-0000",
-  "TEL_LINK": "0310000000",
+  "TEL": "02-6010-7777",
+  "TEL_LINK": "0260107777",
   "EMAIL": "help070it@naver.com",
-  "ADDRESS": "경기도 의정부시",
+  "ADDRESS": "서울 노원구 동일로217가길 13",
   "KAKAO": "#contact",
   "COMPANY": "허브",
   "CEO": "이경종",
   "BIZNO": "000-00-00000",
-  "SITE_URL": "https://kg070tel-ux.github.io"
+  "SITE_URL": "https://kg070tel-ux.github.io",
+  "AREA": "노원을 중심으로 서울 동북부와 경기북부"
 }

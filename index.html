@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>허브 — 사무실 인터넷전화와 통화 녹취, 법인폰 관리</title>
-<meta name="description" content="경기북부 사무실 인터넷전화(LG U+) 설치, 통화 자동 녹취(허브레코딩), 법인폰 통화·문자 관리(허브모바일). 의정부에서 직접 방문 설치합니다.">
-<meta property="og:title" content="허브 — 사무실 인터넷전화와 통화 녹취, 법인폰 관리">
-<meta property="og:description" content="경기북부 사무실 인터넷전화(LG U+) 설치, 통화 자동 녹취(허브레코딩), 법인폰 통화·문자 관리(허브모바일). 의정부에서 직접 방문 설치합니다.">
+<title>허브 — 기업 인터넷전화와 통화 녹취·법인폰 관리</title>
+<meta name="description" content="기업 인터넷전화(LG U+) 개통·이전·재약정 상담과 설치, 허브 자체 부가서비스 허브레코딩(통화 자동 녹취)·허브모바일(법인폰 통화·문자 관리).">
+<meta property="og:title" content="허브 — 기업 인터넷전화와 통화 녹취·법인폰 관리">
+<meta property="og:description" content="기업 인터넷전화(LG U+) 개통·이전·재약정 상담과 설치, 허브 자체 부가서비스 허브레코딩(통화 자동 녹취)·허브모바일(법인폰 통화·문자 관리).">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://kg070tel-ux.github.io/">
 <link rel="canonical" href="https://kg070tel-ux.github.io/">
@@ -19,112 +19,123 @@
 <header class="top">
   <div class="wrap">
     <a class="brand" href="./" aria-label="허브 홈">
-      <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#13304f"/><circle cx="32" cy="32" r="7" fill="#f2a33a"/><circle cx="32" cy="32" r="17" fill="none" stroke="#fff" stroke-width="4" stroke-dasharray="20 7"/></svg>
-      허브
+      <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#e6007e"/><circle cx="32" cy="32" r="7" fill="#fff"/><circle cx="32" cy="32" r="17" fill="none" stroke="#fff" stroke-width="4" stroke-dasharray="20 7"/></svg>
+      <span>허브<small>기업 인터넷전화</small></span>
     </a>
-    <nav class="nav" aria-label="서비스">
-      <a href="voip.html">인터넷전화</a>
-      <a href="recording.html">허브레코딩</a>
-      <a href="mobile.html">허브모바일</a>
+    <nav class="nav" aria-label="메뉴">
+      <a href="voip.html">기업인터넷전화</a>
+      <a href="services.html">부가서비스</a>
+      <a href="#contact">상담신청</a>
     </nav>
-    <a class="btn small call" href="tel:0310000000">전화 상담</a>
+    <a class="top-tel" href="tel:0260107777"><span>상담전화</span>02-6010-7777</a>
   </div>
 </header>
 
 <main>
   <section class="hero">
     <div class="wrap">
-      <div>
-        <h1>사무실 전화,<br>놓치는 통화 없이.</h1>
-        <p class="lead">인터넷전화 설치부터 통화 녹음, 직원 법인폰 관리까지. 경기북부 사무실에 직접 찾아가 설치하고, 기록은 회사 PC에만 남깁니다.</p>
-        <div class="actions">
-          <a class="btn" href="#contact">설치 상담 받기</a>
-          <a class="btn ghost" href="#services">서비스 보기</a>
-        </div>
-        <p class="area">의정부에서 경기북부 사무실로 직접 방문 설치</p>
-      </div>
-
-      <figure class="log" aria-label="허브 관리자 화면 예시: 오늘 통화 기록">
-        <div class="log-head"><span class="dot" aria-hidden="true"></span>오늘 통화 기록<span class="when">관리자 화면 예시</span></div>
-        <ul>
-          <li class="new">
-            <time>14:37</time><span class="tag in">수신</span>
-            <span class="who"><b>한빛상사</b><small>010-****-2990</small></span>
-            <span class="play"><i aria-hidden="true"></i><span class="bar" aria-hidden="true"></span>2:24</span>
-          </li>
-          <li class="alert">
-            <time>14:21</time><span class="tag miss">부재중</span>
-            <span class="who"><b>세움건축</b><small>031-***-4521</small></span>
-            <span class="act">아직 회신 안 함</span>
-          </li>
-          <li>
-            <time>13:49</time><span class="tag out">발신</span>
-            <span class="who"><b>김 팀장 · 법인폰</b><small>010-****-6042</small></span>
-            <span class="play"><i aria-hidden="true"></i><span class="bar" aria-hidden="true"></span>3:13</span>
-          </li>
-          <li>
-            <time>13:02</time><span class="tag sms">문자</span>
-            <span class="who"><b>대성물류</b><small>견적서 메일로 보냈습니다</small></span>
-            <span></span>
-          </li>
+      <div class="hero-copy">
+        <p class="eyebrow light">LG U+ 공식 대리점 · 기업 인터넷전화</p>
+        <h1>사무실 전화,<br>바꾸는 김에<br>제대로.</h1>
+        <p class="lead">기업 인터넷전화 개통·이전·재약정부터 통화 녹취, 법인폰 관리까지. 담당자가 직접 찾아가 설치하고 끝까지 관리합니다.</p>
+        <ul class="chips">
+          <li>쓰던 번호 그대로</li><li>대표번호·내선 설정</li><li>전화기·랜 공사 한 번에</li>
         </ul>
-      </figure>
+      </div>
+      <aside class="quick" aria-label="빠른 상담">
+        <p class="q-title">빠른 상담</p>
+        <p class="q-sub">사무실 인원과 지금 쓰는 전화만 알려주세요.</p>
+        <a class="q-tel" href="tel:0260107777">02-6010-7777</a>
+        <a class="btn block" href="tel:0260107777">지금 전화 상담</a>
+        <a class="btn block soft" href="#contact">카카오톡 문의</a>
+        <p class="q-time">평일 09:00 – 18:00</p>
+      </aside>
     </div>
   </section>
 
-  <section id="services">
+  <section class="menu-band" aria-label="주요 메뉴">
     <div class="wrap">
-      <h2>필요한 것만 골라 쓰세요</h2>
-      <p class="intro">전화 회선 하나만 바꿔도 되고, 녹취나 법인폰 관리를 더해도 됩니다. 이미 LG U+ 인터넷전화를 쓰고 있다면 녹취만, 법인폰 관리만 따로 설치할 수도 있습니다.</p>
-
-      <div class="svc">
-        <div class="name">인터넷전화<small>LG U+ 공식 대리점</small></div>
-        <div>
-          <p>사무실 070 회선과 전화기를 설치합니다. 신규, 이사, 재약정, 통신사 변경 모두 상담합니다.</p>
-          <ul><li>대표번호, 내선, 착신전환 설정</li><li>전화기 설치와 사무실 랜 공사까지 한 번에</li></ul>
-        </div>
-        <a class="btn ghost go" href="voip.html">자세히</a>
-      </div>
-
-      <div class="svc">
-        <div class="name">허브레코딩<small>사무실 통화 자동 녹취</small></div>
-        <div>
-          <p>사무실 모든 인터넷전화의 통화를 자동으로 녹음합니다. 전화기마다 따로 설정할 필요가 없습니다.</p>
-          <ul><li>녹음 파일은 회사 안 PC에 저장, 외부 서버로 나가지 않음</li><li>번호·날짜로 찾아서 바로 듣기, 부재중 확인</li></ul>
-        </div>
-        <a class="btn ghost go" href="recording.html">자세히</a>
-      </div>
-
-      <div class="svc">
-        <div class="name">허브모바일<small>법인폰 통화·문자 관리</small></div>
-        <div>
-          <p>직원에게 지급한 갤럭시 법인폰의 통화 기록, 통화 녹음, 문자를 회사 PC 한 곳에 모읍니다.</p>
-          <ul><li>회신 안 한 부재중을 빨간색으로 표시</li><li>직원이 바뀌어도 거래처별 통화·문자 이력 그대로 인계</li></ul>
-        </div>
-        <a class="btn ghost go" href="mobile.html">자세히</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="tint">
-    <div class="wrap">
-      <h2>이렇게 진행합니다</h2>
-      <p class="intro">상담부터 설치까지 같은 담당자가 맡습니다.</p>
-      <ol class="steps">
-        <li><h3>전화 상담</h3><p>사무실 인원, 지금 쓰는 전화, 필요한 기능을 듣고 맞는 구성을 안내합니다.</p></li>
-        <li><h3>방문 설치</h3><p>사무실에 찾아가 회선·전화기·녹취 장비를 설치하고 직원 폰에 앱을 깔아 드립니다.</p></li>
-        <li><h3>사용 안내와 관리</h3><p>관리자 화면 쓰는 법을 알려드리고, 문제가 생기면 원격이나 방문으로 처리합니다.</p></li>
-      </ol>
+      <a href="voip.html"><b>기업인터넷전화</b><span>신규 · 이전 · 재약정 · 통신사 변경</span></a>
+      <a href="recording.html"><b>허브레코딩</b><span>사무실 통화 자동 녹취</span></a>
+      <a href="mobile.html"><b>허브모바일</b><span>법인폰 통화·문자 관리</span></a>
+      <a href="#contact"><b>상담신청</b><span>02-6010-7777</span></a>
     </div>
   </section>
 
   <section>
     <div class="wrap">
-      <h2>허브가 지키는 것</h2>
-      <p class="intro">통화 기록은 회사의 영업 자산이자 민감한 정보입니다.</p>
+      <div class="head">
+        <p class="eyebrow">기업인터넷전화</p>
+        <h2>사무실에 필요한 전화 기능,<br>설치할 때 전부 맞춰 드립니다</h2>
+        <p class="intro">회선만 개통하고 끝내지 않습니다. 대표번호, 내선, 착신전환까지 사무실 업무 방식에 맞게 설정합니다.</p>
+      </div>
+      <div class="benefit">
+        <div><span class="num">01</span><h3>번호 그대로 이동</h3><p>사무실을 옮기거나 통신사를 바꿔도 쓰던 번호를 그대로 씁니다.</p></div>
+        <div><span class="num">02</span><h3>대표번호 · 내선</h3><p>대표번호로 온 전화를 여러 자리에서 받고, 내선으로 돌려줍니다.</p></div>
+        <div><span class="num">03</span><h3>착신전환 · 당겨받기</h3><p>자리에 없을 때 휴대폰으로 받고, 옆자리 전화도 당겨 받습니다.</p></div>
+        <div><span class="num">04</span><h3>전화기 · 랜 공사</h3><p>전화기 설치와 사무실 랜 배선까지 같은 담당자가 한 번에 처리합니다.</p></div>
+      </div>
+      <p class="center"><a class="btn line-dark" href="voip.html">기업인터넷전화 자세히 보기</a></p>
+    </div>
+  </section>
+
+  <section class="tint" id="services">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">부가서비스</p>
+        <h2>허브가 직접 만든 부가서비스</h2>
+        <p class="intro">인터넷전화에 더해 쓰는 허브 자체 서비스입니다. 이미 LG U+ 인터넷전화를 쓰고 있다면 부가서비스만 따로 설치할 수도 있습니다.</p>
+      </div>
+      <div class="svc-grid">
+      <a class="svc-card" href="recording.html">
+        <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3Z"/><path d="M19 11a7 7 0 0 1-14 0M12 18v3"/></svg></span>
+        <span class="tag-own">허브 자체 서비스</span>
+        <h3>허브레코딩</h3><p class="sub">사무실 통화 자동 녹취</p>
+        <p>사무실 모든 인터넷전화 통화를 자동으로 녹음합니다. 전화기마다 따로 설정할 필요가 없습니다.</p>
+        <ul><li>녹음 파일은 회사 PC에만 저장</li><li>번호·날짜로 찾아 바로 듣기</li><li>부재중 확인과 회신 관리</li></ul>
+        <span class="more">자세히 보기</span>
+      </a>
+      <a class="svc-card" href="mobile.html">
+        <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg></span>
+        <span class="tag-own">허브 자체 서비스</span>
+        <h3>허브모바일</h3><p class="sub">법인폰 통화·문자 관리</p>
+        <p>직원에게 지급한 갤럭시 법인폰의 통화 기록, 통화 녹음, 문자를 회사 PC 한 곳에 모읍니다.</p>
+        <ul><li>회신 안 한 부재중을 빨간색으로</li><li>퇴사·담당 변경 때 이력 그대로 인계</li><li>업무시간만 수집, 개인 번호 제외</li></ul>
+        <span class="more">자세히 보기</span>
+      </a>
+      <div class="svc-card soon">
+        <span class="tag-own">준비 중</span>
+        <h3>새 서비스 준비 중</h3>
+        <p>사무실 전화를 더 편하게 쓰는 부가서비스를 계속 추가합니다.</p>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">진행 절차</p>
+        <h2>상담부터 설치까지 한 담당자가</h2>
+      </div>
+      <ol class="steps">
+        <li><h3>전화 상담</h3><p>사무실 인원, 지금 쓰는 전화, 필요한 기능을 듣고 구성을 안내합니다.</p></li>
+        <li><h3>방문 설치</h3><p>회선·전화기·녹취 장비를 설치하고 직원 폰에 앱을 깔아 드립니다.</p></li>
+        <li><h3>사용 안내</h3><p>전화 설정과 관리자 화면 쓰는 법을 직접 알려 드립니다.</p></li>
+        <li><h3>사후 관리</h3><p>문제가 생기면 원격이나 방문으로 바로 처리합니다.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="tint">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">허브의 약속</p>
+        <h2>통화 기록은 회사의 자산입니다</h2>
+      </div>
       <div class="promise">
         <div><h3>기록은 회사 PC에만</h3><p>녹음과 문자는 고객사 사무실 PC에 저장됩니다. 클라우드나 외부 서버에 올리지 않습니다.</p></div>
-        <div><h3>가까운 곳에서 직접</h3><p>의정부에 있어서 경기북부 어디든 직접 찾아가 설치하고 점검합니다.</p></div>
+        <div><h3>가까운 곳에서 직접</h3><p>노원에 있어서 서울 동북부와 경기북부 어디든 직접 찾아가 설치하고 점검합니다.</p></div>
         <div><h3>직원 사생활은 빼고</h3><p>허브모바일은 업무시간에만 수집하거나 가족 번호를 빼도록 설정할 수 있습니다.</p></div>
       </div>
     </div>
@@ -133,19 +144,20 @@
   <section class="contact" id="contact">
     <div class="wrap">
       <div>
+        <p class="eyebrow">상담신청</p>
         <h2>설치 상담</h2>
-        <p>전화 주시면 사무실 상황에 맞춰 바로 안내해 드립니다.</p>
-        <a class="tel" href="tel:0310000000">031-000-0000</a>
+        <p>전화 주시면 사무실 인원과 지금 쓰는 전화에 맞춰 바로 안내해 드립니다.</p>
+        <a class="tel" href="tel:0260107777">02-6010-7777</a>
         <div class="actions">
-          <a class="btn" href="tel:0310000000">전화 걸기</a>
-          <a class="btn ghost" href="#contact">카카오톡 문의</a>
+          <a class="btn white" href="tel:0260107777">전화 걸기</a>
+          <a class="btn line" href="#contact">카카오톡 문의</a>
         </div>
       </div>
       <dl>
         <dt>상담 시간</dt><dd>평일 09:00 – 18:00</dd>
         <dt>이메일</dt><dd><a href="mailto:help070it@naver.com">help070it@naver.com</a></dd>
-        <dt>주소</dt><dd>경기도 의정부시</dd>
-        <dt>방문 지역</dt><dd>의정부를 중심으로 경기북부</dd>
+        <dt>주소</dt><dd>서울 노원구 동일로217가길 13</dd>
+        <dt>방문 지역</dt><dd>노원을 중심으로 서울 동북부와 경기북부</dd>
       </dl>
     </div>
   </section>
@@ -153,9 +165,16 @@
 
 <footer>
   <div class="wrap">
-    <span>허브</span><span>대표 이경종</span><span>사업자등록번호 000-00-00000</span>
+    <strong>허브</strong>
+    <span>대표 이경종</span><span>사업자등록번호 000-00-00000</span>
+    <span>서울 노원구 동일로217가길 13</span><span>전화 02-6010-7777</span>
     <span>LG U+ 공식 대리점</span>
   </div>
 </footer>
+
+<div class="mbar">
+  <a href="tel:0260107777">전화 상담</a>
+  <a href="#contact">카카오톡 문의</a>
+</div>
 </body>
 </html>
