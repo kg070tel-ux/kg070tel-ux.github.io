@@ -19,6 +19,12 @@ SERVICES = [
     ("mobile.html", "허브모바일", "법인폰 통화·문자 관리",
      "직원에게 지급한 갤럭시 법인폰의 통화 기록, 통화 녹음, 문자를 회사 PC 한 곳에 모읍니다.",
      ["회신 안 한 부재중을 빨간색으로", "퇴사·담당 변경 때 이력 그대로 인계", "업무시간만 수집, 개인 번호 제외"], "mob"),
+    ("holiday.html", "휴무 안내", "휴무일 안내 멘트·착신전환",
+     "회사 휴무일·창립기념일·연휴에 안내 멘트를 걸어 두고, 급한 전화는 담당자 휴대폰으로 돌려 드립니다.",
+     ["휴무 안내 멘트 제작", "정해진 날짜에만 자동 적용", "담당자 휴대폰으로 착신전환"], "cal"),
+    ("night.html", "야간 응대", "퇴근 후 ARS·AI 응대",
+     "퇴근 후 걸려 온 전화를 ARS와 AI가 대신 받아 용건을 남겨 둡니다.",
+     ["업무시간 후 자동 ARS 전환", "건 사람 번호·용건 기록"], "moon", "출시 예정"),
 ]
 
 # 페이지: 파일, 메뉴 그룹, 제목, 설명, 상담 제목
@@ -27,35 +33,42 @@ PAGES = [
      "기업 인터넷전화(SK브로드밴드 공식 대리점) 개통·이전·재약정 상담과 설치, 허브 자체 부가서비스 허브레코딩(통화 자동 녹취)·허브모바일(법인폰 통화·문자 관리).", "설치 상담"),
     ("voip.html", "voip", "기업 인터넷전화 — 허브 (SK브로드밴드 공식 대리점)",
      "사무실 070 기업 인터넷전화 신규·이전·재약정·통신사 변경. 대표번호, 내선, 착신전환 설정과 전화기·랜 공사까지 한 번에.", "기업 인터넷전화 상담"),
+    ("internet.html", "net", "기업인터넷 — 허브 (SK브로드밴드 공식 대리점)",
+     "사무실·매장 인터넷 상담과 설치. 소상공인 든든 인터넷, 사장님안심 보안, 기업 인터넷, 와이파이·랜 배선까지.", "인터넷 상담"),
     ("services.html", "svc", "부가서비스 — 허브 자체 서비스",
-     "허브가 직접 만들어 설치·관리하는 사무실 전화 부가서비스. 허브레코딩, 허브모바일.", "부가서비스 상담"),
+     "허브가 직접 만들어 설치·관리하는 사무실 전화 부가서비스. 허브레코딩, 허브모바일, 휴무 안내, 야간 응대.", "부가서비스 상담"),
+    ("security.html", "sec", "보안·CCTV — 허브 (SK브로드밴드 공식 대리점)",
+     "매장·사무실 CCTV와 인터넷 보안 서비스 상담과 설치.", "보안 상담"),
+    ("lan.html", "lan", "랜공사 — 사무실 랜 배선·랜포트·와이파이 | 허브",
+     "사무실 랜 배선, 랜포트 추가·이동, 통신 단자함 정리, 와이파이 음영 해소. 현장 확인 후 견적.", "랜공사 상담"),
+    ("cases.html", "case", "시공 사례 — 허브",
+     "허브가 인터넷전화·인터넷·랜공사·부가서비스를 설치한 실제 현장.", "설치 상담"),
 ] + [(f, "svc", f"{n} — {d} | 허브", body, f"{n} 상담") for f, n, d, body, *_ in SERVICES]
 
-NAV = [("voip.html", "voip", "기업인터넷전화"), ("services.html", "svc", "부가서비스"), ("#contact", None, "상담신청")]
+NAV = [("voip.html", "voip", "인터넷전화"), ("internet.html", "net", "인터넷"), ("services.html", "svc", "부가서비스"),
+       ("security.html", "sec", "보안"), ("lan.html", "lan", "랜공사"), ("cases.html", "case", "시공사례"), ("#contact", None, "상담신청")]
 
 ICONS = {
     "rec": '<path d="M12 3a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3Z"/><path d="M19 11a7 7 0 0 1-14 0M12 18v3"/>',
     "mob": '<rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/>',
+    "cal": '<rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/>',
+    "moon": '<path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/>',
 }
 
 
 def svc_cards(link_text="자세히 보기"):
     out = []
-    for f, n, d, body, feats, ic in SERVICES:
+    for f, n, d, body, feats, ic, *opt in SERVICES:
+        tag = opt[0] if opt else "허브 자체 서비스"
         li = "".join(f"<li>{H.escape(x)}</li>" for x in feats)
         out.append(f'''      <a class="svc-card" href="{f}">
         <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true">{ICONS.get(ic, "")}</svg></span>
-        <span class="tag-own">허브 자체 서비스</span>
+        <span class="tag-own">{tag}</span>
         <h3>{n}</h3><p class="sub">{d}</p>
         <p>{body}</p>
         <ul>{li}</ul>
         <span class="more">{link_text}</span>
       </a>''')
-    out.append('''      <div class="svc-card soon">
-        <span class="tag-own">준비 중</span>
-        <h3>새 서비스 준비 중</h3>
-        <p>사무실 전화를 더 편하게 쓰는 부가서비스를 계속 추가합니다.</p>
-      </div>''')
     return "\n".join(out)
 
 
