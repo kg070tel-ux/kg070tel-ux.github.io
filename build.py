@@ -34,13 +34,15 @@ PAGES = [
     ("voip.html", "voip", "기업 인터넷전화 — 허브 (SK브로드밴드 공식 대리점)",
      "사무실 070 기업 인터넷전화 신규·이전·재약정·통신사 변경. 대표번호, 내선, 착신전환 설정과 전화기·랜 공사까지 한 번에.", "기업 인터넷전화 상담"),
     ("internet.html", "net", "기업인터넷 — 허브 (SK브로드밴드 공식 대리점)",
-     "사무실·매장 인터넷 상담과 설치. 소상공인 든든 인터넷, 사장님안심 보안, 기업 인터넷, 와이파이·랜 배선까지.", "인터넷 상담"),
+     "기업 인터넷(Biz인터넷)과 국내전용회선·VPN 상담과 설치. 와이파이·랜 배선까지.", "인터넷 상담"),
     ("services.html", "svc", "부가서비스 — 허브 자체 서비스",
      "허브가 직접 만들어 설치·관리하는 사무실 전화 부가서비스. 허브레코딩, 허브모바일, 휴무 안내, 야간 응대.", "부가서비스 상담"),
     ("security.html", "sec", "보안·CCTV — 허브 (SK브로드밴드 공식 대리점)",
-     "매장·사무실 CCTV와 인터넷 보안 서비스 상담과 설치.", "보안 상담"),
+     "SK브로드밴드 기업 보안 상품 상담과 설치.", "보안 상담"),
     ("lan.html", "lan", "랜공사 — 사무실 랜 배선·랜포트·와이파이 | 허브",
      "사무실 랜 배선, 랜포트 추가·이동, 통신 단자함 정리, 와이파이 음영 해소. 현장 확인 후 견적.", "랜공사 상담"),
+    ("privacy.html", None, "개인정보 처리방침 — 허브",
+     "(주)케이지앤아이피 개인정보 처리방침", "상담 문의"),
     ("cases.html", "case", "시공 사례 — 허브",
      "허브가 인터넷전화·인터넷·랜공사·부가서비스를 설치한 실제 현장.", "설치 상담"),
 ] + [(f, "svc", f"{n} — {d} | 허브", body, f"{n} 상담") for f, n, d, body, *_ in SERVICES]
@@ -72,6 +74,35 @@ def svc_cards(link_text="자세히 보기"):
     return "\n".join(out)
 
 
+PRODUCTS = ["인터넷전화", "기업 인터넷·전용회선", "허브레코딩(통화 녹취)", "허브모바일(법인폰 관리)",
+            "휴무 안내", "랜공사", "기타"]
+
+
+def consult_form(pid, card=True):
+    opts = "".join(f'<option>{p}</option>' for p in PRODUCTS)
+    inner = f'''<form class="consult" novalidate>
+        <label for="{pid}-name">이름</label>
+        <input id="{pid}-name" name="name" autocomplete="name" placeholder="이름 또는 회사명" required>
+        <label for="{pid}-phone">연락처</label>
+        <input id="{pid}-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="010-0000-0000" required>
+        <div class="row2">
+          <div><label for="{pid}-time">희망 시간</label>
+          <select id="{pid}-time" name="time"><option>언제든 가능</option><option>오전 (09–12시)</option><option>오후 (13–18시)</option></select></div>
+          <div><label for="{pid}-product">관심 상품</label>
+          <select id="{pid}-product" name="product">{opts}</select></div>
+        </div>
+        <label class="agree"><input type="checkbox" name="agree"> 개인정보 수집·이용에 동의합니다 <a href="privacy.html" target="_blank">[보기]</a></label>
+        <button type="submit" class="btn block">상담 예약하기</button>
+        <p class="form-msg" role="status" aria-live="polite"></p>
+      </form>'''
+    if not card:
+        return "    " + inner
+    return f'''      <div class="form-card">
+        <p class="form-title">상담 예약</p>
+        {inner}
+      </div>'''
+
+
 def main():
     site = json.load(open(os.path.join(ROOT, "site.json"), encoding="utf-8"))
     layout = open(os.path.join(ROOT, "src", "_layout.html"), encoding="utf-8").read()
@@ -81,13 +112,14 @@ def main():
         nav = "\n".join(
             f'      <a href="{f}"{cur if g and g == grp else ""}>{m}</a>' for f, g, m in NAV)
         body = open(os.path.join(ROOT, "src", fn), encoding="utf-8").read()
-        html = layout.replace("{{BODY}}", body).replace("{{NAV}}", nav).replace("{{SERVICE_CARDS}}", cards)
+        html = (layout.replace("{{BODY}}", body).replace("{{NAV}}", nav).replace("{{SERVICE_CARDS}}", cards)
+                .replace("{{CONSULT_FORM}}", consult_form("cf")).replace("{{CONSULT_FORM_MODAL}}", consult_form("mf", card=False)))
         # site.json 에서 비워 둔 항목은 화면에서 뺌 (카카오톡 링크·사업자번호는 받으면 채우기)
         if not site.get("KAKAO"):
             html = re.sub(r'\s*<a[^>]*href="\{\{KAKAO\}\}"[^>]*>[^<]*</a>', "", html)
         if not site.get("BIZNO"):
             html = re.sub(r'<span>사업자등록번호 \{\{BIZNO\}\}</span>', "", html)
-        vals = dict(site, TITLE=title, DESC=desc, CONTACT_TITLE=ctitle,
+        vals = dict(site, TITLE=title, DESC=desc, CONTACT_TITLE=ctitle, MONTH=f"{datetime.date.today().month}월",
                     FILE_URL="" if fn == "index.html" else fn)
         for k, v in vals.items():
             html = html.replace("{{" + k + "}}", v)

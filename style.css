@@ -262,3 +262,47 @@ section:not(.tint) .check{border:1px solid var(--line)}
 @media (max-width:860px){.cases{grid-template-columns:1fr}}
 .nav{gap:26px}
 @media (max-width:1100px){.nav{gap:18px}.nav a{font-size:15.5px}}
+
+/* ---------- 상담 예약 폼 ---------- */
+.form-card{background:#fff;color:var(--text);border-radius:var(--radius-l);padding:28px;box-shadow:0 30px 60px -24px rgba(70,25,0,.45)}
+.form-title{font-size:20px;font-weight:800;color:var(--ink);margin:0 0 12px}
+form.consult label{display:block;font-size:14px;font-weight:700;color:var(--ink);margin:10px 0 4px}
+form.consult input,form.consult select{width:100%;font:inherit;font-size:16px;padding:11px 12px;border:1px solid #d0d0d8;border-radius:var(--radius-s);background:#fff;color:var(--text)}
+form.consult input:focus,form.consult select:focus{outline:2px solid var(--brand);outline-offset:0;border-color:var(--brand)}
+form.consult .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+form.consult label.agree{display:flex;align-items:center;gap:8px;font-weight:500;font-size:14px;color:var(--sub);margin:14px 0}
+form.consult label.agree input{width:18px;height:18px;flex:none}
+form.consult label.agree a{color:var(--sub)}
+form.consult button[disabled]{opacity:.6}
+.form-msg{margin:10px 0 0;font-size:14.5px;min-height:1.4em}
+.form-msg.ok{color:var(--in);font-weight:700}
+.form-msg.err{color:var(--miss);font-weight:700}
+.contact dl{margin-top:8px}
+@media (max-width:520px){form.consult .row2{grid-template-columns:1fr;gap:0}}
+
+/* 떠 있는 상담 버튼 + 팝업 */
+.float-consult{position:fixed;right:24px;bottom:24px;z-index:25;border:0;cursor:pointer;font:inherit;font-weight:800;font-size:16px;
+  color:#fff;background:var(--brand);padding:15px 22px;border-radius:999px;box-shadow:0 14px 30px -10px rgba(238,96,15,.7)}
+.float-consult:hover{background:var(--brand-2)}
+.mbar button{border:0;font:inherit;font-weight:800;font-size:16px;padding:15px 8px;background:var(--ink);color:#fff;cursor:pointer}
+@media (max-width:760px){.float-consult{display:none}}
+.modal{position:fixed;inset:0;z-index:50;background:rgba(20,10,0,.55);display:grid;place-items:center;padding:16px}
+.modal[hidden]{display:none}
+.modal-box{background:#fff;border-radius:var(--radius-l);padding:28px;width:100%;max-width:460px;max-height:calc(100vh - 32px);overflow:auto;position:relative}
+.modal-title{font-size:22px;font-weight:800;color:var(--ink);margin:0}
+.modal-sub{color:var(--sub);font-size:14.5px;margin:4px 0 6px}
+.modal-sub a{color:var(--brand);font-weight:700}
+.modal-x{position:absolute;top:10px;right:14px;border:0;background:none;font-size:30px;line-height:1;cursor:pointer;color:var(--sub)}
+body.modal-open{overflow:hidden}
+
+/* 이달 혜택 */
+.promo{background:linear-gradient(120deg,var(--brand) 0%,#dc4a12 60%,var(--violet) 100%);color:#fff}
+.promo h2{color:#fff;text-align:center}
+.promo-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:32px}
+.promo-grid div{background:#fff;color:var(--text);border-radius:var(--radius-l);padding:24px 20px;text-align:center}
+.promo-grid h3{color:var(--ink);margin:0 0 6px;font-size:19px}
+.promo-grid p{margin:0;color:var(--sub);font-size:15px}
+@media (max-width:860px){.promo-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.promo-grid{grid-template-columns:1fr}}
+.contact .form-card .form-title{color:var(--ink)}
+.modal-sub a{white-space:nowrap}

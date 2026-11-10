@@ -36,19 +36,15 @@
       <div>
         <p class="eyebrow">상담신청</p>
         <h2>{{CONTACT_TITLE}}</h2>
-        <p>전화 주시면 사무실 인원과 지금 쓰는 전화에 맞춰 바로 안내해 드립니다.</p>
+        <p>전화 주시거나 상담 예약을 남겨 주시면 사무실 인원과 지금 쓰는 전화에 맞춰 안내해 드립니다.</p>
         <a class="tel" href="tel:{{TEL_LINK}}">{{TEL}}</a>
-        <div class="actions">
-          <a class="btn white" href="tel:{{TEL_LINK}}">전화 걸기</a>
-          <a class="btn line" href="{{KAKAO}}">카카오톡 문의</a>
-        </div>
+        <dl>
+          <dt>상담 시간</dt><dd>평일 09:00 – 18:00 (점심 12:00 – 13:00)</dd>
+          <dt>주소</dt><dd>{{ADDRESS}}</dd>
+          <dt>방문 지역</dt><dd>{{AREA}}</dd>
+        </dl>
       </div>
-      <dl>
-        <dt>상담 시간</dt><dd>평일 09:00 – 18:00</dd>
-        <dt>이메일</dt><dd><a href="mailto:{{EMAIL}}">{{EMAIL}}</a></dd>
-        <dt>주소</dt><dd>{{ADDRESS}}</dd>
-        <dt>방문 지역</dt><dd>{{AREA}}</dd>
-      </dl>
+{{CONSULT_FORM}}
     </div>
   </section>
 </main>
@@ -64,7 +60,55 @@
 
 <div class="mbar">
   <a href="tel:{{TEL_LINK}}">전화 상담</a>
-  <a href="{{KAKAO}}">카카오톡 문의</a>
+  <button type="button" data-consult>상담 예약</button>
 </div>
+
+<button type="button" class="float-consult" data-consult>상담 예약하기</button>
+
+<div class="modal" id="consult-modal" hidden>
+  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="consult-modal-title">
+    <button type="button" class="modal-x" data-close aria-label="닫기">×</button>
+    <p class="modal-title" id="consult-modal-title">상담 예약</p>
+    <p class="modal-sub">남겨 주시면 희망 시간에 전화드립니다. 바로 통화하려면 <a href="tel:{{TEL_LINK}}">{{TEL}}</a></p>
+{{CONSULT_FORM_MODAL}}
+  </div>
+</div>
+
+<script>
+(function(){
+  var CFG = {action:"{{GF_ACTION}}", name:"{{GF_NAME}}", phone:"{{GF_PHONE}}", time:"{{GF_TIME}}", product:"{{GF_PRODUCT}}", page:"{{GF_PAGE}}"};
+  var modal = document.getElementById("consult-modal");
+  var lastFocus = null;
+  function open(){ lastFocus = document.activeElement; modal.hidden = false; document.body.classList.add("modal-open");
+    var f = modal.querySelector("input"); if (f) f.focus(); }
+  function close(){ modal.hidden = true; document.body.classList.remove("modal-open"); if (lastFocus) lastFocus.focus(); }
+  document.querySelectorAll("[data-consult]").forEach(function(b){ b.addEventListener("click", open); });
+  modal.addEventListener("click", function(e){ if (e.target === modal || e.target.hasAttribute("data-close")) close(); });
+  document.addEventListener("keydown", function(e){ if (e.key === "Escape" && !modal.hidden) close(); });
+
+  document.querySelectorAll("form.consult").forEach(function(form){
+    var msg = form.querySelector(".form-msg");
+    form.addEventListener("submit", function(e){
+      e.preventDefault();
+      var d = new FormData(form);
+      var phone = (d.get("phone") || "").replace(/[^0-9]/g, "");
+      if (!d.get("name") || phone.length < 9) { msg.textContent = "이름과 연락처를 확인해 주세요."; msg.className = "form-msg err"; return; }
+      if (!form.querySelector("[name=agree]").checked) { msg.textContent = "개인정보 수집·이용에 동의해 주세요."; msg.className = "form-msg err"; return; }
+      if (!CFG.action) { msg.textContent = "지금은 전화로 문의해 주세요: {{TEL}}"; msg.className = "form-msg err"; return; }
+      var body = new URLSearchParams();
+      body.append(CFG.name, d.get("name"));
+      body.append(CFG.phone, d.get("phone"));
+      body.append(CFG.time, d.get("time") || "");
+      body.append(CFG.product, d.get("product") || "");
+      body.append(CFG.page, document.title);
+      var btn = form.querySelector("button[type=submit]"); btn.disabled = true;
+      fetch(CFG.action, {method:"POST", mode:"no-cors", body: body})
+        .then(function(){ form.reset(); msg.textContent = "상담 예약이 접수되었습니다. 희망 시간에 전화드리겠습니다."; msg.className = "form-msg ok"; })
+        .catch(function(){ msg.textContent = "전송하지 못했습니다. 전화로 문의해 주세요: {{TEL}}"; msg.className = "form-msg err"; })
+        .finally(function(){ btn.disabled = false; });
+    });
+  });
+})();
+</script>
 </body>
 </html>
