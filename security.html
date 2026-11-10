@@ -131,6 +131,8 @@
 <script>
 (function(){
   var CFG = {action:"", name:"", phone:"", time:"", product:"", page:""};
+  var cur = document.querySelector('.nav a[aria-current="page"]');
+  if (cur) { var nv = cur.parentNode; nv.scrollLeft = cur.offsetLeft - nv.clientWidth / 2 + cur.offsetWidth / 2; }
   var modal = document.getElementById("consult-modal");
   var lastFocus = null;
   function open(){ lastFocus = document.activeElement; modal.hidden = false; document.body.classList.add("modal-open");
