@@ -4,7 +4,7 @@
         <p class="eyebrow light">통화녹음 · 허브레코딩</p>
         <h1>사무실 통화를<br>전부, 자동으로 녹음합니다.</h1>
         <p>KT · LG U+ · SK브로드밴드 인터넷전화 모두 됩니다. 전화기마다 녹음 버튼을 누를 필요 없이 모든 통화가 녹음되고, 관리자 화면에서 번호나 날짜로 찾아 바로 듣습니다.</p>
-        <a class="btn white" href="#contact">설치 상담 받기</a>
+        <a class="btn white" href="#contact">설치 상담 받기</a> <a class="btn line" href="#how">설치 구조 보기</a>
       </div>
       <figure class="log" aria-label="허브레코딩 관리자 화면 예시">
         <div class="log-head"><span class="dot" aria-hidden="true"></span>통화 기록 · 녹음<span class="when">관리자 화면 예시</span></div>
@@ -84,18 +84,102 @@
     </div>
   </section>
 
-  <section class="tint">
-    <div class="wrap split">
-      <div>
-        <h2>설치에 필요한 것</h2>
-        <p class="intro" style="margin-bottom:0">녹음만 하는 PC 한 대를 사무실 공유기 옆에 둡니다. 모니터·키보드 없이 켜 두기만 하면 되고, 관리자는 사무실 아무 PC의 인터넷 창에서 녹음을 듣습니다.</p>
+  <section class="tint" id="how">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">어떻게 녹음되나요</p>
+        <h2>전화기는 그대로, 통로에서 복사합니다</h2>
+        <p class="intro">인터넷전화의 통화 소리는 사무실 인터넷선을 타고 오갑니다. 그 통로 중간에 '미러링 허브'를 하나 달아서, 지나가는 통화를 한 부씩 복사해 녹음 PC로 보냅니다.</p>
       </div>
-      <ul class="check">
-        <li>KT · LG U+ · SK브로드밴드 인터넷전화 사용 중</li>
-        <li>녹취파일 저장용 PC 1대 (남는 PC를 써도 됩니다)</li>
-        <li>녹취 허브 장비 — 설치 때 허브콜이 가져가서 연결</li>
-        <li>전화기 설정 변경 없음, 직원이 할 일 없음</li>
-      </ul>
+      <figure class="rec-diagram" aria-label="허브레코딩 설치 구조 그림">
+        <svg class="dg-wide" viewBox="0 0 1000 420" role="img">
+          <title>통신사 인터넷선 → 미러링 허브 → 사무실 전화기, 그리고 허브에서 녹음 PC로 복사되는 구조</title>
+          <defs>
+            <marker id="ra" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="#9a9aa6"/></marker>
+            <marker id="rb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="#ee600f"/></marker>
+          </defs>
+          <g text-anchor="middle">
+            <!-- 통신사 -->
+            <rect x="10" y="60" width="160" height="110" rx="14" fill="#f1f1f5" stroke="#d6d6de"/>
+            <text x="90" y="104" font-size="19" font-weight="800" fill="#16161d">통신사 인터넷선</text>
+            <text x="90" y="130" font-size="14" fill="#6b6b76">KT · LG U+ · SK</text>
+            <text x="90" y="150" font-size="13" fill="#6b6b76">(모뎀)</text>
+            <line x1="170" y1="115" x2="262" y2="115" stroke="#9a9aa6" stroke-width="4" marker-end="url(#ra)"/>
+            <!-- 허브 -->
+            <rect x="266" y="50" width="210" height="130" rx="14" fill="#fff2e8" stroke="#ee600f" stroke-width="3"/>
+            <text x="371" y="92" font-size="13" font-weight="800" fill="#ee600f">① 허브콜이 설치</text>
+            <text x="371" y="122" font-size="22" font-weight="800" fill="#16161d">미러링 허브</text>
+            <text x="371" y="150" font-size="14" fill="#6b6b76">지나가는 통화를 한 부 복사</text>
+            <line x1="476" y1="115" x2="568" y2="115" stroke="#9a9aa6" stroke-width="4" marker-end="url(#ra)"/>
+            <!-- 전화기 -->
+            <rect x="572" y="30" width="418" height="170" rx="14" fill="#fff" stroke="#d6d6de"/>
+            <text x="781" y="60" font-size="16" font-weight="800" fill="#16161d">사무실 전화기 · PC (지금 그대로)</text>
+            <g font-size="14" fill="#16161d">
+              <rect x="592" y="78" width="118" height="100" rx="10" fill="#f6f6f9" stroke="#e6e6ec"/><text x="651" y="120" font-size="26">☎</text><text x="651" y="152">전화기 1</text>
+              <rect x="722" y="78" width="118" height="100" rx="10" fill="#f6f6f9" stroke="#e6e6ec"/><text x="781" y="120" font-size="26">☎</text><text x="781" y="152">전화기 2</text>
+              <rect x="852" y="78" width="118" height="100" rx="10" fill="#f6f6f9" stroke="#e6e6ec"/><text x="911" y="120" font-size="26">☎</text><text x="911" y="152">전화기 …</text>
+            </g>
+            <!-- 복사선 -->
+            <line x1="371" y1="180" x2="371" y2="262" stroke="#ee600f" stroke-width="4" stroke-dasharray="8 6" marker-end="url(#rb)"/>
+            <text x="300" y="228" font-size="14" font-weight="700" fill="#ee600f" text-anchor="end">통화 복사본</text>
+            <!-- 녹음 PC -->
+            <rect x="236" y="266" width="270" height="140" rx="14" fill="#fff" stroke="#ee600f" stroke-width="3"/>
+            <text x="371" y="300" font-size="13" font-weight="800" fill="#ee600f">② 고객사가 준비 (남는 PC)</text>
+            <text x="371" y="332" font-size="22" font-weight="800" fill="#16161d">녹음 PC</text>
+            <text x="371" y="358" font-size="14" fill="#6b6b76">녹음 프로그램이 돌면서</text>
+            <text x="371" y="380" font-size="14" fill="#6b6b76">녹음 파일을 이 PC에 저장</text>
+            <!-- 관리자 -->
+            <line x1="506" y1="336" x2="640" y2="336" stroke="#9a9aa6" stroke-width="3" stroke-dasharray="6 6" marker-end="url(#ra)"/>
+            <rect x="644" y="276" width="346" height="120" rx="14" fill="#f6f6f9" stroke="#e6e6ec"/>
+            <text x="817" y="314" font-size="13" font-weight="800" fill="#16161d">③ 관리자</text>
+            <text x="817" y="344" font-size="19" font-weight="800" fill="#16161d">사무실 아무 PC에서</text>
+            <text x="817" y="370" font-size="14" fill="#6b6b76">인터넷 창을 열어 검색 · 듣기</text>
+          </g>
+        </svg>
+        <svg class="dg-tall" viewBox="0 0 360 760" role="img">
+          <title>허브레코딩 설치 구조 (세로)</title>
+          <defs>
+            <marker id="ra2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="#9a9aa6"/></marker>
+            <marker id="rb2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="#ee600f"/></marker>
+          </defs>
+          <g text-anchor="middle">
+            <rect x="60" y="10" width="240" height="80" rx="14" fill="#f1f1f5" stroke="#d6d6de"/>
+            <text x="180" y="46" font-size="19" font-weight="800" fill="#16161d">통신사 인터넷선</text>
+            <text x="180" y="72" font-size="14" fill="#6b6b76">KT · LG U+ · SK (모뎀)</text>
+            <line x1="180" y1="90" x2="180" y2="128" stroke="#9a9aa6" stroke-width="4" marker-end="url(#ra2)"/>
+            <rect x="40" y="132" width="280" height="112" rx="14" fill="#fff2e8" stroke="#ee600f" stroke-width="3"/>
+            <text x="180" y="164" font-size="13" font-weight="800" fill="#ee600f">① 허브콜이 설치</text>
+            <text x="180" y="196" font-size="22" font-weight="800" fill="#16161d">미러링 허브</text>
+            <text x="180" y="224" font-size="14" fill="#6b6b76">지나가는 통화를 한 부 복사</text>
+            <line x1="110" y1="244" x2="110" y2="300" stroke="#9a9aa6" stroke-width="4" marker-end="url(#ra2)"/>
+            <line x1="250" y1="244" x2="250" y2="460" stroke="#ee600f" stroke-width="4" stroke-dasharray="8 6" marker-end="url(#rb2)"/>
+            <text x="262" y="360" font-size="13" font-weight="700" fill="#ee600f" text-anchor="start">복사본</text>
+            <rect x="10" y="304" width="200" height="130" rx="14" fill="#fff" stroke="#d6d6de"/>
+            <text x="110" y="340" font-size="15" font-weight="800" fill="#16161d">사무실 전화기</text>
+            <text x="110" y="384" font-size="30">☎ ☎ ☎</text>
+            <text x="110" y="416" font-size="13" fill="#6b6b76">지금 그대로</text>
+            <rect x="110" y="464" width="240" height="132" rx="14" fill="#fff" stroke="#ee600f" stroke-width="3"/>
+            <text x="230" y="494" font-size="13" font-weight="800" fill="#ee600f">② 고객사가 준비 (남는 PC)</text>
+            <text x="230" y="526" font-size="22" font-weight="800" fill="#16161d">녹음 PC</text>
+            <text x="230" y="552" font-size="14" fill="#6b6b76">녹음 프로그램이 돌면서</text>
+            <text x="230" y="574" font-size="14" fill="#6b6b76">녹음 파일을 이 PC에 저장</text>
+            <line x1="230" y1="596" x2="230" y2="634" stroke="#9a9aa6" stroke-width="3" stroke-dasharray="6 6" marker-end="url(#ra2)"/>
+            <rect x="40" y="638" width="300" height="110" rx="14" fill="#f6f6f9" stroke="#e6e6ec"/>
+            <text x="190" y="670" font-size="13" font-weight="800" fill="#16161d">③ 관리자</text>
+            <text x="190" y="700" font-size="19" font-weight="800" fill="#16161d">사무실 아무 PC에서</text>
+            <text x="190" y="726" font-size="14" fill="#6b6b76">인터넷 창을 열어 검색 · 듣기</text>
+          </g>
+        </svg>
+      </figure>
+      <div class="explain">
+        <div><span class="badge">①</span><h3>미러링 허브 = 통로의 복사기</h3><p>사무실 인터넷선 중간에 다는 작은 장비입니다. 통화를 막거나 바꾸지 않고 지나가는 소리를 한 부 복사만 하기 때문에 통화 품질에 영향이 없습니다. 설치할 때 허브콜이 가져가서 연결합니다.</p></div>
+        <div><span class="badge">②</span><h3>녹음 PC = 녹음기 겸 보관함</h3><p>복사된 통화를 받아 녹음 파일로 만들고 그 자리에 저장합니다. 녹음이 회사 밖으로 나가지 않는 이유입니다. 모니터·키보드 없이 허브 옆에 켜 두기만 하면 됩니다.</p></div>
+        <div><span class="badge">③</span><h3>듣는 건 아무 PC에서</h3><p>관리자는 자기 자리 PC에서 인터넷 창을 열어 날짜·번호·내선으로 찾아 듣습니다. 녹음 PC 앞에 갈 필요가 없습니다.</p></div>
+      </div>
+      <div class="who-does">
+        <div><p class="wd-title">허브콜이 하는 일</p><ul class="check"><li>미러링 허브 가져가서 연결</li><li>녹음 PC에 프로그램 설치·설정</li><li>관리자 화면 사용법 안내</li><li>문제 생기면 원격·방문 처리</li></ul></div>
+        <div><p class="wd-title">고객사가 준비할 것</p><ul class="check"><li>녹음 전용으로 쓸 PC 1대 (남는 PC 가능)</li><li>그 PC를 꺼지지 않게 켜 두기</li><li>전화기·통신사는 지금 그대로</li></ul></div>
+      </div>
     </div>
   </section>
 
@@ -105,6 +189,8 @@
       <div class="faq">
         <details><summary>정말 어느 통신사든 되나요?</summary><p>KT, LG U+, SK브로드밴드 인터넷전화 사무실에서 녹음을 확인했습니다. 통신사를 바꾸지 않고 지금 쓰는 전화 그대로 설치합니다.</p></details>
         <details><summary>20회선 이상 무료는 어떤 조건인가요?</summary><p>허브콜을 통해 인터넷전화 20회선 이상을 함께 가입하시면 허브레코딩 월 이용료를 받지 않습니다. 설치비와 세부 조건은 상담 때 안내해 드립니다.</p></details>
+        <details><summary>녹음 PC를 꼭 따로 둬야 하나요?</summary><p>녹음 PC는 24시간 켜져 있어야 통화를 놓치지 않습니다. 직원이 쓰는 PC에 깔면 퇴근 때 끄거나 재부팅하는 동안의 통화가 녹음되지 않고, 녹음 파일도 아무나 볼 수 있게 됩니다. 그래서 남는 PC 한 대를 녹음 전용으로 둡니다.</p></details>
+        <details><summary>미러링 허브를 달면 인터넷이나 통화가 느려지나요?</summary><p>아니요. 지나가는 데이터를 복사만 하고 막거나 고치지 않기 때문에 인터넷과 통화 품질은 그대로입니다.</p></details>
         <details><summary>녹음은 얼마나 보관되나요?</summary><p>녹취파일 저장 PC에 계속 쌓이며 따로 지우지 않는 한 영구 보관됩니다.</p></details>
         <details><summary>직원이 녹음을 끌 수 있나요?</summary><p>아니요. 전화기가 아니라 사무실 네트워크에서 녹음하기 때문에 전화기에서는 켜고 끌 수 없습니다.</p></details>
         <details><summary>통화 상대에게 녹음 사실을 알려야 하나요?</summary><p>직원과 고객에게 녹음 사실을 미리 안내하는 것을 권합니다. 전화를 받으면 나오는 "통화 내용이 녹음됩니다" 안내 멘트 제작도 도와드립니다.</p></details>
