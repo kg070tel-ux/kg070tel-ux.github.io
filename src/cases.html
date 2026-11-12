@@ -1,19 +1,67 @@
   <section class="page-hero">
     <div class="wrap">
       <p class="eyebrow light">시공 사례</p>
-      <h1>허브가 설치한 현장</h1>
-      <p>인터넷전화·인터넷·랜공사·부가서비스를 설치한 실제 현장입니다. 고객사 동의를 받은 사진만 올립니다.</p>
+      <h1>허브콜이 공사한 현장</h1>
+      <p>인터넷·전화·랜공사·와이파이를 설치한 실제 현장입니다. 고객사 이름은 밝히지 않습니다.</p>
     </div>
   </section>
 
   <section>
     <div class="wrap">
-      <!-- 사례 추가 방법: 사진·업종·지역·한 일을 Claude에게 보내면 아래 칸을 사례 카드로 바꿈 -->
-      <div class="cases">
-        <div class="todo"><b>시공 사례 준비 중</b>첫 현장 사진을 곧 올립니다.</div>
-        <div class="todo"><b>시공 사례 준비 중</b></div>
-        <div class="todo"><b>시공 사례 준비 중</b></div>
-      </div>
-      <!-- TODO: 네이버 플레이스 리뷰 주소 받으면 "고객 후기 보기" 버튼 추가 -->
+      <article class="case">
+        <div class="case-text">
+          <span class="case-tag">대형 사무실</span>
+          <h2>콜센터형 사무실 — 인터넷·전화 교체와 와이파이</h2>
+          <ul class="check">
+            <li>통신실 랙 정리, 패치패널로 자리별 선 정리</li>
+            <li>복도·사무실 천장형 와이파이 AP 설치</li>
+            <li>전화기 교체 (기존 전화기 회수)</li>
+            <li>공사 후 기가 속도 910Mbps 확인</li>
+          </ul>
+        </div>
+        <div class="gallery g2">
+          <figure><img src="img/lan/rack-patch.jpg" alt="정리한 통신 랙" loading="lazy"></figure>
+          <figure><img src="img/lan/office-large.jpg" alt="칸막이가 많은 대형 사무실" loading="lazy"></figure>
+          <figure><img src="img/lan/desk-phone.jpg" alt="자리마다 설치한 IP 전화기" loading="lazy"></figure>
+          <figure><img src="img/lan/speedtest.jpg" alt="910Mbps 속도 측정" loading="lazy"></figure>
+        </div>
+      </article>
+
+      <article class="case">
+        <div class="case-text">
+          <span class="case-tag">학교</span>
+          <h2>학교 — 교실·복도 랜 배선</h2>
+          <ul class="check">
+            <li>층별 복도에 분배함 설치</li>
+            <li>교실까지 랜선 포설, 몰딩 마감</li>
+            <li>방학 기간에 맞춰 공사</li>
+          </ul>
+        </div>
+        <div class="gallery g2">
+          <figure><img src="img/lan/box.jpg" alt="복도 벽 분배함" loading="lazy"></figure>
+          <figure><img src="img/lan/corridor.jpg" alt="학교 복도" loading="lazy"></figure>
+          <figure><img src="img/lan/molding.jpg" alt="몰딩으로 정리한 선" loading="lazy"></figure>
+          <figure><img src="img/lan/cable-box.jpg" alt="공사에 쓴 랜선 박스" loading="lazy"></figure>
+        </div>
+      </article>
+
+      <article class="case">
+        <div class="case-text">
+          <span class="case-tag">소규모 사무실</span>
+          <h2>디자인 사무실 — 단자함 정리와 배선</h2>
+          <ul class="check">
+            <li>장비와 선이 엉킨 단자함 정리</li>
+            <li>노출 천장 배선 정리</li>
+            <li>자리별 인터넷·전화 연결</li>
+          </ul>
+        </div>
+        <div class="gallery g2">
+          <figure><img src="img/lan/cabinet-before.jpg" alt="공사 전 단자함" loading="lazy"></figure>
+          <figure><img src="img/lan/cabinet-after.jpg" alt="공사 후 단자함" loading="lazy"></figure>
+          <figure><img src="img/lan/office-small.jpg" alt="소규모 사무실 내부" loading="lazy"></figure>
+          <figure><img src="img/lan/ceiling-wire.jpg" alt="노출 천장 배선" loading="lazy"></figure>
+        </div>
+      </article>
+      <!-- 사례 추가: 사진·업종·한 일을 Claude에게 보내면 article.case 하나 더 추가 -->
     </div>
   </section>

@@ -1,6 +1,6 @@
-/* 허브 — 기업 인터넷전화 · 부가서비스 */
+/* 허브콜 — 인터넷전화 부가서비스 · 3사 기업통신 */
 :root{
-  --brand:#ee600f;      /* SK브로드밴드 계열 오렌지 */
+  --brand:#ee600f;      /* 허브콜 오렌지 */
   --brand-2:#cf4a07;
   --violet:#b5301a;     /* 첫 화면 그라데이션 끝색 (적주황) */
   --ink:#16161d;        /* 제목 */
@@ -432,4 +432,138 @@ body.modal-open{overflow:hidden}
 @media (max-width:360px){
   .promo-grid,.benefit{grid-template-columns:1fr}
   .top-tel{font-size:15px}
+}
+
+/* ================= 허브콜 개편 (11/12) ================= */
+.menu-band .wrap{grid-template-columns:repeat(5,1fr)}
+@media (max-width:760px){.menu-band .wrap{grid-template-columns:1fr 1fr}.menu-band a:last-child{grid-column:1/-1}}
+footer .foot-links{margin-top:10px;display:flex;flex-wrap:wrap;gap:6px 18px}
+footer .foot-links a{color:inherit;opacity:.8}
+
+/* 가격 카드 */
+.price-card{background:#fff;border:2px solid var(--brand);border-radius:var(--radius-l);padding:32px 30px;box-shadow:0 24px 50px -30px rgba(238,96,15,.5)}
+.pc-label{margin:0;font-weight:800;color:var(--brand)}
+.pc-price{margin:6px 0 14px;font-size:20px;color:var(--ink);font-weight:700}
+.pc-price b{font-size:52px;letter-spacing:-.03em;font-variant-numeric:tabular-nums;line-height:1}
+.pc-price small{display:block;font-size:14px;color:var(--sub);font-weight:600;margin-top:6px}
+.price-card ul{list-style:none;margin:0 0 18px;padding:0}
+.price-card li{padding:8px 0 8px 28px;position:relative;border-top:1px solid var(--line)}
+.price-card li::before{content:"";position:absolute;left:3px;top:16px;width:12px;height:7px;border-left:2.5px solid var(--brand);border-bottom:2.5px solid var(--brand);transform:rotate(-45deg)}
+.pc-free{margin:0;background:var(--pink-50);border-radius:var(--radius-s);padding:14px 16px;color:var(--ink);font-size:16px}
+.pc-free b{color:var(--brand)}
+
+/* 비교표 */
+.cmp-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table.cmp{width:100%;border-collapse:separate;border-spacing:0;background:#fff;border:1px solid var(--line);border-radius:var(--radius-l);overflow:hidden;font-size:16px}
+table.cmp caption{caption-side:bottom;text-align:left;color:var(--sub);font-size:14px;padding-top:10px}
+table.cmp th,table.cmp td{padding:14px 16px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+table.cmp thead th{background:var(--ink);color:#fff;font-weight:700;font-size:15px;white-space:nowrap}
+table.cmp tbody th{color:var(--ink);font-weight:700;white-space:nowrap;background:var(--mist)}
+table.cmp tr:last-child td,table.cmp tr:last-child th{border-bottom:0}
+table.cmp td b{color:var(--brand)}
+table.cmp td small{display:block;color:var(--sub);font-size:13px}
+table.cmp tr.hl td,table.cmp tr.hl th{background:var(--pink-50)}
+table.cmp.wide{min-width:640px}
+table.cmp .new{display:inline-block;font-size:11px;background:var(--brand);color:#fff;border-radius:999px;padding:1px 7px;margin-left:4px;vertical-align:2px}
+.note{color:var(--sub);font-size:15px;margin:14px 0 0}
+.note a{color:var(--brand);font-weight:700}
+.center-note{text-align:center;max-width:44em;margin:36px auto 0;font-size:17px;color:var(--text)}
+
+/* 통신사 카드 */
+.carriers{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.carrier{display:flex;flex-direction:column;gap:8px;text-decoration:none;background:#fff;border:1px solid var(--line);border-radius:var(--radius-l);padding:28px 26px;border-top:5px solid var(--sub);transition:transform .2s,box-shadow .2s}
+.carrier:hover{transform:translateY(-3px);box-shadow:0 20px 40px -26px rgba(0,0,0,.35)}
+.carrier b{font-size:22px;color:var(--ink)}
+.carrier span{color:var(--sub);font-size:16px;flex:1}
+.carrier em{font-style:normal;font-weight:800;color:var(--brand)}
+.carrier em::after{content:" →"}
+.carrier.lg{border-top-color:#e6007e}.carrier.sk{border-top-color:#f47725}.carrier.kt{border-top-color:#e4002b}
+@media (max-width:860px){.carriers{grid-template-columns:1fr}}
+
+/* 보안 띠 (첫 화면) */
+.sec-band{background:#1d1b26;color:#e9e7f0}
+.sec-band h2{color:#fff}
+.sec-band p{color:#c9c6d4}
+.sec-mini{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.sec-mini li{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius-l);padding:20px 22px;display:flex;flex-direction:column}
+.sec-mini b{color:#ffb98a;font-size:19px}
+.sec-mini span{color:#d8d5e2}
+
+/* 사진 */
+.gallery{display:grid;gap:16px}
+.gallery.g3{grid-template-columns:repeat(3,1fr)}
+.gallery.g2{grid-template-columns:1fr 1fr}
+.gallery figure,.ba figure,.work figure{margin:0}
+.gallery img,.ba img,.work img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:var(--radius-l);background:var(--mist)}
+.gallery figcaption{margin-top:8px;font-weight:700;color:var(--ink);text-align:center}
+@media (max-width:760px){.gallery.g3{grid-template-columns:1fr}.gallery.g2{gap:10px}}
+.hero-photo{margin:0}
+.hero-photo img{display:block;width:100%;max-height:440px;object-fit:cover;border-radius:var(--radius-l);box-shadow:0 30px 60px -24px rgba(0,0,0,.5)}
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.ba figcaption{margin-top:10px;color:var(--sub)}
+.ba figcaption span{display:inline-block;font-weight:800;border-radius:999px;padding:2px 12px;margin-right:8px;font-size:14px}
+.ba .b{background:#eee;color:#555}.ba .a{background:var(--brand);color:#fff}
+@media (max-width:620px){.ba{grid-template-columns:1fr}}
+.work{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.work figcaption{padding:14px 2px 0}
+.work figcaption p{color:var(--sub);margin:0;font-size:16px}
+@media (max-width:860px){.work{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.work{grid-template-columns:1fr}}
+
+/* 시공 사례 */
+.case{display:grid;grid-template-columns:1fr 1.3fr;gap:40px;align-items:start;padding:0 0 64px;margin:0 0 64px;border-bottom:1px solid var(--line)}
+.case:last-of-type{border-bottom:0;margin-bottom:0;padding-bottom:0}
+.case h2{font-size:clamp(24px,2.6vw,32px)}
+.case-tag{display:inline-block;background:var(--pink-50);color:var(--brand);font-weight:800;font-size:14px;border-radius:999px;padding:3px 12px;margin-bottom:10px}
+@media (max-width:860px){.case{grid-template-columns:1fr;gap:20px}}
+
+/* 전화기 */
+.phones{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.phones figure,.phone-txt{margin:0;background:#fff;border:1px solid var(--line);border-radius:var(--radius-l);padding:18px;text-align:center;display:flex;flex-direction:column}
+.phones img{display:block;width:100%;height:170px;object-fit:contain;mix-blend-mode:multiply;margin-bottom:10px}
+.phones figcaption,.phone-txt{display:flex;flex-direction:column;gap:2px}
+.phones b{color:var(--ink);font-size:18px}
+.phones span{color:var(--sub);font-size:14.5px}
+.phones em{font-style:normal;font-weight:800;color:var(--brand);margin-top:6px}
+.phone-txt{justify-content:center;min-height:150px}
+@media (max-width:860px){.phones{grid-template-columns:1fr 1fr}}
+
+/* 보안 */
+.news{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.news > div{background:#fff;border:1px solid var(--line);border-left:5px solid var(--miss);border-radius:var(--radius-l);padding:26px 24px;display:flex;flex-direction:column}
+.news .when{font-weight:800;color:var(--miss);font-size:14px;margin-bottom:4px}
+.news p{color:var(--sub);margin:0 0 12px;flex:1}
+.news a{color:var(--ink);font-size:14px;font-weight:700}
+.news a::after{content:" ↗"}
+@media (max-width:860px){.news{grid-template-columns:1fr}}
+.sec-diagram{margin:0 0 40px;background:#fff;border-radius:var(--radius-l);padding:24px;border:1px solid var(--line)}
+.sec-diagram svg{display:block;width:100%;height:auto}
+.explain{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.explain > div{background:#fff;border-radius:var(--radius-l);padding:26px 24px;border:1px solid var(--line)}
+.explain p{color:var(--sub);margin:0}
+.badge{display:inline-block;background:var(--ink);color:#fff;font-weight:800;font-size:13px;border-radius:999px;padding:2px 12px;margin-bottom:10px}
+@media (max-width:860px){.explain{grid-template-columns:1fr}}
+.steps .stop{display:inline-block;margin-top:12px;background:var(--pink-50);color:var(--brand);font-weight:800;font-size:13.5px;border-radius:999px;padding:4px 12px}
+.sec-prods{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.sec-prods > div{background:#fff;border-radius:var(--radius-l);padding:28px 26px;border-top:4px solid var(--brand);box-shadow:0 10px 30px -20px rgba(0,0,0,.25)}
+.sp-tag{display:inline-block;background:var(--ink);color:#fff;font-weight:800;font-size:13px;border-radius:999px;padding:2px 12px;margin-bottom:10px}
+.sp-price{font-size:24px;font-weight:800;color:var(--brand);margin:0 0 10px;letter-spacing:-.02em}
+.sec-prods p{color:var(--sub);margin:0 0 12px;font-size:16px}
+.sec-prods ul{margin:0;padding-left:18px;color:var(--text);font-size:15.5px}
+@media (max-width:860px){.sec-prods{grid-template-columns:1fr}}
+.example{margin-top:28px;background:var(--ink);color:#fff;border-radius:var(--radius-l);padding:22px 26px}
+.example p{margin:0}
+.ex-title{font-weight:800;color:#ffb98a;margin-bottom:4px !important}
+.example b{font-size:22px;color:#fff}
+.example small{color:#c9c6d4}
+.sec-hero{background:linear-gradient(120deg,#2a2735 0%,#1d1b26 60%,#3a1d12 100%)}
+.sec-diagram .dg-tall{display:none;max-width:380px;margin:0 auto}
+@media (max-width:640px){.sec-diagram .dg-wide{display:none}.sec-diagram .dg-tall{display:block}.sec-diagram{padding:14px}}
+@media (max-width:640px){
+  table.cmp{font-size:14px}
+  table.cmp th,table.cmp td{padding:10px 9px}
+  table.cmp thead th{white-space:normal;font-size:13.5px}
+  table.cmp.plans{min-width:0}
+  table.cmp.plans tbody th{white-space:normal}
+  .pc-price b{font-size:44px}
 }

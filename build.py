@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-허브 홈페이지 빌드: src/ 본문 + _layout.html + site.json(연락처) → 루트에 html 생성
+허브콜 홈페이지 빌드: src/ 본문 + _layout.html + site.json(연락처) → 루트에 html 생성
 
 새 부가서비스 추가 (2단계):
   1) src/새파일.html 작성 (recording.html 을 복사해서 고치면 편함)
@@ -11,13 +11,13 @@ import json, os, re, datetime, html as H
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 
-# 부가서비스 (허브 자체 서비스): 파일, 이름, 한 줄 설명, 카드 본문, 특징 2~3개, 아이콘
+# 부가서비스 (허브콜 자체 서비스): 파일, 이름, 한 줄 설명, 카드 본문, 특징 2~3개, 아이콘
 SERVICES = [
-    ("recording.html", "허브레코딩", "사무실 통화 자동 녹취",
-     "사무실 모든 인터넷전화 통화를 자동으로 녹음합니다. 전화기마다 따로 설정할 필요가 없습니다.",
-     ["녹음 파일은 회사 PC에만 저장", "번호·날짜로 찾아 바로 듣기", "부재중 확인과 회신 관리"], "rec"),
-    ("mobile.html", "허브모바일", "법인폰 통화·문자 관리",
-     "직원에게 지급한 갤럭시 법인폰의 통화 기록, 통화 녹음, 문자를 회사 PC 한 곳에 모읍니다.",
+    ("recording.html", "허브레코딩", "사무실 통화 자동 녹음",
+     "KT·LG U+·SK브로드밴드 인터넷전화 모두, 사무실 모든 통화를 자동으로 녹음합니다. 전화기 대수와 상관없이 월 정액입니다.",
+     ["녹음은 회사 PC에 영구 보관", "번호·날짜로 찾아 바로 듣기", "인터넷전화 20회선 이상 함께 가입 시 무료"], "rec"),
+    ("mobile.html", "허브모바일", "법인폰·TM폰 통화·문자 관리",
+     "영업용 법인폰, 휴대폰으로 일하는 TM폰의 통화 기록·통화 녹음·문자를 회사 PC 한 곳에 모읍니다.",
      ["회신 안 한 부재중을 빨간색으로", "퇴사·담당 변경 때 이력 그대로 인계", "업무시간만 수집, 개인 번호 제외"], "mob"),
     ("holiday.html", "휴무 안내", "휴무일 안내 멘트·착신전환",
      "회사 휴무일·창립기념일·연휴에 안내 멘트를 걸어 두고, 급한 전화는 담당자 휴대폰으로 돌려 드립니다.",
@@ -29,25 +29,33 @@ SERVICES = [
 
 # 페이지: 파일, 메뉴 그룹, 제목, 설명, 상담 제목
 PAGES = [
-    ("index.html", None, "허브 — 기업 인터넷전화와 통화 녹취·법인폰 관리",
-     "기업 인터넷전화(SK브로드밴드 공식 대리점) 개통·이전·재약정 상담과 설치, 허브 자체 부가서비스 허브레코딩(통화 자동 녹취)·허브모바일(법인폰 통화·문자 관리).", "설치 상담"),
-    ("voip.html", "voip", "기업 인터넷전화 — 허브 (SK브로드밴드 공식 대리점)",
-     "사무실 070 기업 인터넷전화 신규·이전·재약정·통신사 변경. 대표번호, 내선, 착신전환 설정과 전화기·랜 공사까지 한 번에.", "기업 인터넷전화 상담"),
-    ("internet.html", "net", "기업인터넷 — 허브 (SK브로드밴드 공식 대리점)",
-     "기업 인터넷(Biz인터넷)과 국내전용회선·VPN 상담과 설치. 와이파이·랜 배선까지.", "인터넷 상담"),
-    ("services.html", "svc", "부가서비스 — 허브 자체 서비스",
-     "허브가 직접 만들어 설치·관리하는 사무실 전화 부가서비스. 허브레코딩, 허브모바일, 휴무 안내, 야간 응대.", "부가서비스 상담"),
-    ("security.html", "sec", "보안·CCTV — 허브 (SK브로드밴드 공식 대리점)",
-     "SK브로드밴드 기업 보안 상품 상담과 설치.", "보안 상담"),
-    ("lan.html", "lan", "랜공사 — 사무실 랜 배선·랜포트·와이파이 | 허브",
-     "사무실 랜 배선, 랜포트 추가·이동, 통신 단자함 정리, 와이파이 음영 해소. 현장 확인 후 견적.", "랜공사 상담"),
-    ("privacy.html", None, "개인정보 처리방침 — 허브",
+    ("index.html", None, "허브콜 — 사무실 통화녹음·법인폰 관리, 3사 인터넷전화",
+     "인터넷전화 부가서비스를 직접 만드는 허브콜. 사무실 통화 자동 녹음(허브레코딩), 법인폰 통화·문자 관리(허브모바일), KT·LG U+·SK브로드밴드 기업 인터넷·전화, 보안, 랜공사.", "설치 상담"),
+    ("phone.html", "tel", "기업 인터넷·전화 — KT·LG U+·SK브로드밴드 비교 상담 | 허브콜",
+     "사무실 인터넷과 인터넷전화를 3사 모두 비교해서 안내합니다. 신규·이전·재약정, 랜공사 지원, 전화기 무료 조건까지.", "인터넷·전화 상담"),
+    ("lg.html", "tel", "LG U+ 기업 인터넷·전화 — 오피스넷·자유통화 요금 | 허브콜",
+     "LG U+ 오피스넷 기가 인터넷과 기업070 자유통화 요금, 무료 전화기, 녹취·ARS 포함 조건, DCS, 랜공사 지원 안내 (VAT 별도).", "LG U+ 상담"),
+    ("sk.html", "tel", "SK브로드밴드 기업 인터넷·전화 — Biz인터넷·정액제 요금 | 허브콜",
+     "SK브로드밴드 Biz인터넷과 기업 인터넷전화 정액제 요금, IP 2개 기본 제공, 전화기 가격 안내 (VAT 별도).", "SK브로드밴드 상담"),
+    ("kt.html", "tel", "KT 기업 인터넷·전화 상담 | 허브콜",
+     "KT 기업 인터넷과 사무실 인터넷전화 재약정·이전·신규 상담.", "KT 상담"),
+    ("security.html", "sec", "사무실 보안 — UTM·PC 백신·랜섬웨어 차단 | 허브콜",
+     "개인정보 유출 사고와 2026년 9월 개정 개인정보보호법. UTM과 PC 백신이 왜 필요한지 쉽게 설명하고 사무실 규모에 맞춰 안내합니다.", "보안 상담"),
+    ("lan.html", "lan", "랜공사 — 사무실 랜 배선·단자함 정리·와이파이 | 허브콜",
+     "사무실·학교 랜 배선, 랜포트 추가·이동, 통신 단자함 정리, 와이파이 AP 설치. 현장 확인 후 견적.", "랜공사 상담"),
+    ("cases.html", "case", "시공 사례 — 허브콜",
+     "허브콜이 인터넷·전화·랜공사·와이파이를 설치한 실제 현장.", "설치 상담"),
+    ("services.html", "svc", "부가서비스 — 허브콜 자체 서비스",
+     "허브콜이 직접 만들어 설치·관리하는 사무실 전화 부가서비스. 허브레코딩, 허브모바일, 휴무 안내, 야간 응대.", "부가서비스 상담"),
+    ("privacy.html", None, "개인정보 처리방침 — 허브콜",
      "(주)케이지앤아이피 개인정보 처리방침", "상담 문의"),
-    ("cases.html", "case", "시공 사례 — 허브",
-     "허브가 인터넷전화·인터넷·랜공사·부가서비스를 설치한 실제 현장.", "설치 상담"),
-] + [(f, "svc", f"{n} — {d} | 허브", body, f"{n} 상담") for f, n, d, body, *_ in SERVICES]
+] + [(f, {"recording.html": "rec", "mobile.html": "mob"}.get(f, "svc"), f"{n} — {d} | 허브콜", body, f"{n} 상담")
+     for f, n, d, body, *_ in SERVICES]
 
-NAV = [("voip.html", "voip", "인터넷전화"), ("internet.html", "net", "인터넷"), ("services.html", "svc", "부가서비스"),
+# 옛 주소 → 새 주소 (예전 링크가 깨지지 않게)
+REDIRECTS = {"voip.html": "phone.html", "internet.html": "phone.html"}
+
+NAV = [("recording.html", "rec", "통화녹음"), ("mobile.html", "mob", "법인폰 관리"), ("phone.html", "tel", "인터넷·전화"),
        ("security.html", "sec", "보안"), ("lan.html", "lan", "랜공사"), ("cases.html", "case", "시공사례"), ("#contact", None, "상담신청")]
 
 ICONS = {
@@ -61,7 +69,7 @@ ICONS = {
 def svc_cards(link_text="자세히 보기"):
     out = []
     for f, n, d, body, feats, ic, *opt in SERVICES:
-        tag = opt[0] if opt else "허브 자체 서비스"
+        tag = opt[0] if opt else "허브콜 자체 서비스"
         li = "".join(f"<li>{H.escape(x)}</li>" for x in feats)
         out.append(f'''      <a class="svc-card" href="{f}">
         <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true">{ICONS.get(ic, "")}</svg></span>
@@ -74,8 +82,8 @@ def svc_cards(link_text="자세히 보기"):
     return "\n".join(out)
 
 
-PRODUCTS = ["인터넷전화", "기업 인터넷·전용회선", "허브레코딩(통화 녹취)", "허브모바일(법인폰 관리)",
-            "휴무 안내", "랜공사", "기타"]
+PRODUCTS = ["통화녹음 (허브레코딩)", "법인폰 관리 (허브모바일)", "인터넷·전화 (LG U+·SK·KT)",
+            "보안 (UTM·PC 백신)", "랜공사·와이파이", "휴무 안내", "기타"]
 
 
 def consult_form(pid, card=True):
@@ -125,6 +133,11 @@ def main():
             html = html.replace("{{" + k + "}}", v)
         open(os.path.join(ROOT, fn), "w", encoding="utf-8").write(html)
         print("만듦:", fn)
+    for old, new in REDIRECTS.items():
+        open(os.path.join(ROOT, old), "w", encoding="utf-8").write(
+            f'<!doctype html><meta charset="utf-8"><meta http-equiv="refresh" content="0; url={new}">'
+            f'<link rel="canonical" href="{site["SITE_URL"]}/{new}"><a href="{new}">이동</a>\n')
+        print("옮김:", old, "→", new)
     today = datetime.date.today().isoformat()
     urls = "".join(f"<url><loc>{site['SITE_URL']}/{'' if f == 'index.html' else f}</loc><lastmod>{today}</lastmod></url>"
                    for f, *_ in PAGES)
