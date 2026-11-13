@@ -82,10 +82,11 @@
   if (cur) { var nv = cur.parentNode; nv.scrollLeft = cur.offsetLeft - nv.clientWidth / 2 + cur.offsetWidth / 2; }
   var modal = document.getElementById("consult-modal");
   var lastFocus = null;
-  function open(){ lastFocus = document.activeElement; modal.hidden = false; document.body.classList.add("modal-open");
+  function open(product){ lastFocus = document.activeElement; modal.hidden = false; document.body.classList.add("modal-open");
+    if (product) { var ps = modal.querySelector("select[name=product]"); if (ps) ps.value = product; }
     var f = modal.querySelector("input"); if (f) f.focus(); }
   function close(){ modal.hidden = true; document.body.classList.remove("modal-open"); if (lastFocus) lastFocus.focus(); }
-  document.querySelectorAll("[data-consult]").forEach(function(b){ b.addEventListener("click", open); });
+  document.querySelectorAll("[data-consult]").forEach(function(b){ b.addEventListener("click", function(){ open(b.dataset.product); }); });
   modal.addEventListener("click", function(e){ if (e.target === modal || e.target.hasAttribute("data-close")) close(); });
   document.addEventListener("keydown", function(e){ if (e.key === "Escape" && !modal.hidden) close(); });
 

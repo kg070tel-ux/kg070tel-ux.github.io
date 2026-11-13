@@ -598,3 +598,62 @@ table.cmp.ladder{min-width:560px}
 .who-does > div:last-child{border-top:4px solid var(--ink)}
 .wd-title{font-weight:800;font-size:18px;color:var(--ink);margin:0 0 8px}
 @media (max-width:760px){.who-does{grid-template-columns:1fr}}
+
+/* ── 체험 화면 (demo.js) ── */
+.demo-wrap{max-width:1040px;margin:0 auto}
+.demo-steps{display:flex;flex-wrap:wrap;gap:8px 18px;justify-content:center;margin:-12px 0 24px;padding:0;list-style:none;color:var(--sub);font-size:15px}
+.demo-steps b{color:var(--brand);margin-right:4px}
+.d-app{background:#fff;border:1px solid var(--line);border-radius:var(--radius-l);box-shadow:0 30px 60px -30px rgba(40,20,0,.35);overflow:hidden;font-size:15px;color:var(--text)}
+.d-bar{display:flex;align-items:center;gap:12px;background:#1b1b22;color:#fff;padding:11px 16px;font-size:14.5px}
+.d-dots{display:flex;gap:6px}.d-dots i{width:10px;height:10px;border-radius:50%;background:#4a4a55}.d-dots i:first-child{background:var(--brand)}
+.d-ok{margin-left:auto;white-space:nowrap;display:flex;align-items:center;gap:7px;color:#bdbdc8;font-size:13px}
+.d-ok i{width:8px;height:8px;border-radius:50%;background:#3ccf8e;box-shadow:0 0 0 3px rgba(60,207,142,.2)}
+.d-tool{display:flex;gap:8px;padding:14px 16px 0;flex-wrap:wrap}
+.d-sel,.d-q{font:inherit;font-size:15px;border:1px solid #d6d6de;border-radius:10px;padding:9px 12px;background:#fff;color:var(--text);min-height:44px}
+.d-q{flex:1;min-width:200px}
+.d-sel:focus,.d-q:focus{outline:2px solid var(--brand);outline-offset:-1px;border-color:var(--brand)}
+.d-xl{font:inherit;font-size:14px;font-weight:700;border:1px solid #cfe3d7;background:#eef8f2;color:#1f7a50;border-radius:10px;padding:0 14px;min-height:44px;cursor:pointer}
+.d-chips{display:flex;gap:6px;padding:12px 16px 0;flex-wrap:wrap}
+.d-chips button{font:inherit;font-size:14px;font-weight:600;border:1px solid var(--line);background:#fff;color:var(--sub);border-radius:999px;padding:6px 14px;cursor:pointer;min-height:36px}
+.d-chips button.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.d-sum{margin:12px 16px 8px;font-size:14px;color:var(--sub)}.d-sum b{color:var(--ink)}.d-red{color:var(--miss);font-weight:700}
+.d-row{display:grid;align-items:center;gap:12px;padding:11px 16px;border-top:1px solid var(--line)}
+.d-row.rec{grid-template-columns:96px 64px 1fr 1.2fr 200px 44px}
+.d-row.mob{grid-template-columns:96px 74px .9fr 1.1fr 1.6fr 44px}
+.d-head{background:var(--mist);font-size:13px;font-weight:700;color:var(--sub);padding-top:9px;padding-bottom:9px}
+.d-list{max-height:520px;overflow:auto}
+.d-row.alert{background:#fff5f2}.d-row.now{background:var(--pink-50)}
+.d-when{font-variant-numeric:tabular-nums;color:var(--sub);font-size:14px}.d-when b{color:var(--ink);font-weight:700}
+.d-who{min-width:0}.d-who b,.d-who small{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.d-who b{font-weight:700;font-variant-numeric:tabular-nums}.d-who small{color:var(--sub);font-size:13px}
+.d-row em.tag{font-style:normal}
+.tag.ext{background:#efeaf8;color:#5b3f99}.tag.done{background:#ececf2;color:var(--sub)}
+.d-play{display:flex;align-items:center;gap:8px;min-width:0}
+.d-btn{flex:none;width:36px;height:36px;border-radius:50%;border:0;display:grid;place-items:center;cursor:pointer;background:var(--pink-50);text-decoration:none}
+.d-btn:hover{background:#ffe2cf}
+.d-btn.play::before{content:"";border-left:11px solid var(--brand);border-top:7px solid transparent;border-bottom:7px solid transparent;margin-left:3px}
+.d-btn.play.on{background:var(--brand)}
+.d-btn.play.on::before{border:0;margin:0;width:11px;height:12px;background:linear-gradient(90deg,#fff 0 4px,transparent 4px 7px,#fff 7px)}
+.d-btn.save{background:#f1f1f5}.d-btn.save:hover{background:#e6e6ec}
+.d-btn.save::before{content:"";width:14px;height:14px;background:var(--ink);-webkit-mask:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M6 10l6 6 6-6M4 21h16"/></svg>') center/contain no-repeat;mask:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M6 10l6 6 6-6M4 21h16"/></svg>') center/contain no-repeat}
+.d-track{flex:1;height:6px;border-radius:3px;background:var(--line);position:relative;overflow:hidden;cursor:pointer;min-width:40px}
+.d-track i{position:absolute;inset:0 auto 0 0;width:0;background:var(--brand)}
+.d-time{font-size:13px;color:var(--sub);font-variant-numeric:tabular-nums;white-space:nowrap}
+.d-rec{min-width:0;display:flex;flex-direction:column;gap:4px}
+.d-need{color:var(--miss);font-weight:700;font-size:14px}
+.d-note{color:var(--sub);font-size:13px}
+.d-text{font-size:14px;line-height:1.5;color:var(--text);background:var(--mist);border-radius:10px;padding:8px 11px}
+.d-empty{padding:40px 16px;text-align:center;color:var(--sub);margin:0;border-top:1px solid var(--line)}
+.demo-note{margin:14px 0 0;text-align:center;color:var(--sub);font-size:13.5px}
+.try-box{margin-top:36px;display:flex;align-items:center;gap:20px;justify-content:space-between;background:var(--ink);color:#fff;border-radius:var(--radius-l);padding:26px 30px;flex-wrap:wrap}
+.try-box h3{margin:0 0 6px;font-size:21px;color:#fff}.try-box p{margin:0;color:#c9c9d3;font-size:15px}
+@media (max-width:760px){
+  .d-head{display:none}
+  .d-row.rec,.d-row.mob{grid-template-columns:auto 1fr 40px;grid-template-areas:"when tag act" "who peer act" "rec rec rec";gap:6px 10px;padding:13px 14px}
+  .d-row > :nth-child(1){grid-area:when}.d-row > :nth-child(2){grid-area:tag}.d-row > :nth-child(3){grid-area:who}
+  .d-row > :nth-child(4){grid-area:peer}.d-row > :nth-child(5){grid-area:rec}.d-row > :nth-child(6){grid-area:act;align-self:start}
+  .d-tool{padding:12px 12px 0}.d-chips{padding:10px 12px 0}.d-sum{margin:10px 12px 6px}
+  .d-sel{flex:1}.d-q{min-width:100%;order:3}.d-xl{order:2}
+  .d-list{max-height:none}
+  .try-box{padding:22px 20px}.try-box .btn{width:100%}
+}

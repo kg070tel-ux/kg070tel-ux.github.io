@@ -146,7 +146,7 @@
           <div><label for="cf-time">희망 시간</label>
           <select id="cf-time" name="time"><option>언제든 가능</option><option>오전 (09–12시)</option><option>오후 (13–18시)</option></select></div>
           <div><label for="cf-product">관심 상품</label>
-          <select id="cf-product" name="product"><option>통화녹음 (허브레코딩)</option><option>법인폰 관리 (허브모바일)</option><option>인터넷·전화 (LG U+·SK·KT)</option><option>보안 (UTM·PC 백신)</option><option>랜공사·와이파이</option><option>휴무 안내</option><option>기타</option></select></div>
+          <select id="cf-product" name="product"><option>통화녹음 (허브레코딩)</option><option>허브레코딩 써보기 신청</option><option>법인폰 관리 (허브모바일)</option><option>허브모바일 써보기 신청</option><option>인터넷·전화 (LG U+·SK·KT)</option><option>보안 (UTM·PC 백신)</option><option>랜공사·와이파이</option><option>휴무 안내</option><option>기타</option></select></div>
         </div>
         <label class="agree"><input type="checkbox" name="agree"> 개인정보 수집·이용에 동의합니다 <a href="privacy.html" target="_blank">[보기]</a></label>
         <button type="submit" class="btn block">상담 예약하기</button>
@@ -188,7 +188,7 @@
           <div><label for="mf-time">희망 시간</label>
           <select id="mf-time" name="time"><option>언제든 가능</option><option>오전 (09–12시)</option><option>오후 (13–18시)</option></select></div>
           <div><label for="mf-product">관심 상품</label>
-          <select id="mf-product" name="product"><option>통화녹음 (허브레코딩)</option><option>법인폰 관리 (허브모바일)</option><option>인터넷·전화 (LG U+·SK·KT)</option><option>보안 (UTM·PC 백신)</option><option>랜공사·와이파이</option><option>휴무 안내</option><option>기타</option></select></div>
+          <select id="mf-product" name="product"><option>통화녹음 (허브레코딩)</option><option>허브레코딩 써보기 신청</option><option>법인폰 관리 (허브모바일)</option><option>허브모바일 써보기 신청</option><option>인터넷·전화 (LG U+·SK·KT)</option><option>보안 (UTM·PC 백신)</option><option>랜공사·와이파이</option><option>휴무 안내</option><option>기타</option></select></div>
         </div>
         <label class="agree"><input type="checkbox" name="agree"> 개인정보 수집·이용에 동의합니다 <a href="privacy.html" target="_blank">[보기]</a></label>
         <button type="submit" class="btn block">상담 예약하기</button>
@@ -204,10 +204,11 @@
   if (cur) { var nv = cur.parentNode; nv.scrollLeft = cur.offsetLeft - nv.clientWidth / 2 + cur.offsetWidth / 2; }
   var modal = document.getElementById("consult-modal");
   var lastFocus = null;
-  function open(){ lastFocus = document.activeElement; modal.hidden = false; document.body.classList.add("modal-open");
+  function open(product){ lastFocus = document.activeElement; modal.hidden = false; document.body.classList.add("modal-open");
+    if (product) { var ps = modal.querySelector("select[name=product]"); if (ps) ps.value = product; }
     var f = modal.querySelector("input"); if (f) f.focus(); }
   function close(){ modal.hidden = true; document.body.classList.remove("modal-open"); if (lastFocus) lastFocus.focus(); }
-  document.querySelectorAll("[data-consult]").forEach(function(b){ b.addEventListener("click", open); });
+  document.querySelectorAll("[data-consult]").forEach(function(b){ b.addEventListener("click", function(){ open(b.dataset.product); }); });
   modal.addEventListener("click", function(e){ if (e.target === modal || e.target.hasAttribute("data-close")) close(); });
   document.addEventListener("keydown", function(e){ if (e.key === "Escape" && !modal.hidden) close(); });
 
