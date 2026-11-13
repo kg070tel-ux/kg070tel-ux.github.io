@@ -657,3 +657,18 @@ table.cmp.ladder{min-width:560px}
   .d-list{max-height:none}
   .try-box{padding:22px 20px}.try-box .btn{width:100%}
 }
+
+/* ── 법인폰 판매 ── */
+.gx-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.gx-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius-l);padding:18px 16px 20px;text-align:center}
+.gx-img{height:150px;display:grid;place-items:center;margin-bottom:12px;background:var(--mist);border-radius:12px}
+.gx-img svg{height:128px;width:auto}.gx-img img{max-height:140px;max-width:100%;object-fit:contain}
+.gx-tag{display:inline-block;margin:0 0 6px;font-size:12.5px;font-weight:800;color:var(--brand);background:var(--pink-50);border-radius:999px;padding:3px 10px}
+.gx-card h3{margin:0 0 6px;font-size:17px}.gx-card p:last-child{margin:0;font-size:14px;color:var(--sub);line-height:1.5}
+.gx-note{text-align:center;color:var(--sub);font-size:14px;margin:16px 0 0}
+.gx-bundle{margin-top:48px;align-items:center}
+.gx-bundle .pc-price{font-size:20px}.gx-bundle .pc-price b{font-size:30px}
+.gx-table{margin:14px 0 10px;width:100%}
+.gx-steps{margin-top:52px}.gx-steps li b{display:block;font-size:18px;margin-bottom:6px;color:var(--ink)}.gx-steps li span{color:var(--sub);font-size:15px}
+@media (max-width:960px){.gx-grid{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:620px){.gx-grid{grid-template-columns:1fr 1fr;gap:10px}.gx-card{padding:14px 10px 16px}.gx-img{height:120px}.gx-img svg{height:100px}.gx-card h3{font-size:15.5px}}
