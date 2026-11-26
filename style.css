@@ -677,3 +677,11 @@ table.cmp.ladder{min-width:560px}
 form.consult .memo-box[hidden]{display:none}
 form.consult textarea{width:100%;box-sizing:border-box;font:inherit;font-size:16px;padding:11px 12px;border:1px solid #d0d0d8;border-radius:var(--radius-s);background:#fff;color:var(--text);resize:vertical;min-height:96px}
 form.consult textarea:focus{outline:2px solid var(--brand);outline-offset:0;border-color:var(--brand)}
+
+.gx-grid.gx-two{grid-template-columns:repeat(2,minmax(0,320px));justify-content:center}
+.gx-info{margin:28px 0}
+.gx-info-title{font-size:19px;color:var(--ink);margin:0 0 12px}
+.gx-info .cmp th{white-space:nowrap;width:180px;text-align:left}
+.gx-info table.cmp.wide{min-width:0;width:100%}
+.gx-info table.cmp td{white-space:normal;word-break:keep-all}
+@media (max-width:760px){.gx-grid.gx-two{grid-template-columns:1fr 1fr}.gx-info .cmp th{width:88px;white-space:normal;font-size:13.5px}.gx-info .cmp td{font-size:14px}}
