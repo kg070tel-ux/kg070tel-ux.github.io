@@ -70,6 +70,7 @@ section.tint{background:var(--mist)}
 .head .intro{margin:0 auto}
 .eyebrow{font-weight:800;color:var(--brand);font-size:15px;letter-spacing:.02em;margin:0 0 12px}
 .eyebrow.light{color:#ffe0c4}
+.eyebrow.big{font-size:24px;margin-bottom:14px}
 h2{font-size:clamp(28px,3.6vw,42px);line-height:1.3;letter-spacing:-.035em;color:var(--ink);margin:0 0 16px;font-weight:800}
 h3{font-size:21px;line-height:1.4;letter-spacing:-.02em;color:var(--ink);margin:0 0 8px;font-weight:800}
 p.intro{color:var(--sub);font-size:18px;max-width:38em;margin:0 0 48px}

@@ -77,7 +77,7 @@
 
 <script>
 (function(){
-  var CFG = {action:"{{GF_ACTION}}", name:"{{GF_NAME}}", phone:"{{GF_PHONE}}", time:"{{GF_TIME}}", product:"{{GF_PRODUCT}}", page:"{{GF_PAGE}}"};
+  var MAILTO = "{{NOTIFY_EMAIL}}";   // 상담 예약 → 이 메일로 전송 (FormSubmit)
   var cur = document.querySelector('.nav a[aria-current="page"]');
   if (cur) { var nv = cur.parentNode; nv.scrollLeft = cur.offsetLeft - nv.clientWidth / 2 + cur.offsetWidth / 2; }
   var modal = document.getElementById("consult-modal");
@@ -98,15 +98,12 @@
       var phone = (d.get("phone") || "").replace(/[^0-9]/g, "");
       if (!d.get("name") || phone.length < 9) { msg.textContent = "이름과 연락처를 확인해 주세요."; msg.className = "form-msg err"; return; }
       if (!form.querySelector("[name=agree]").checked) { msg.textContent = "개인정보 수집·이용에 동의해 주세요."; msg.className = "form-msg err"; return; }
-      if (!CFG.action) { msg.textContent = "지금은 전화로 문의해 주세요: {{TEL}}"; msg.className = "form-msg err"; return; }
-      var body = new URLSearchParams();
-      body.append(CFG.name, d.get("name"));
-      body.append(CFG.phone, d.get("phone"));
-      body.append(CFG.time, d.get("time") || "");
-      body.append(CFG.product, d.get("product") || "");
-      body.append(CFG.page, document.title);
+      var body = {"이름": d.get("name"), "연락처": d.get("phone"), "희망 시간": d.get("time") || "", "관심 상품": d.get("product") || "",
+                  "보낸 페이지": document.title, "_subject": "[홈페이지 상담예약] " + d.get("name") + " / " + (d.get("product") || ""),
+                  "_template": "table", "_captcha": "false"};
       var btn = form.querySelector("button[type=submit]"); btn.disabled = true;
-      fetch(CFG.action, {method:"POST", mode:"no-cors", body: body})
+      fetch("https://formsubmit.co/ajax/" + MAILTO, {method:"POST", headers:{"Content-Type":"application/json", "Accept":"application/json"}, body: JSON.stringify(body)})
+        .then(function(r){ return r.json().then(function(j){ if (!r.ok || String(j.success) === "false") throw new Error(j.message || "fail"); }); })
         .then(function(){ form.reset(); msg.textContent = "상담 예약이 접수되었습니다. 희망 시간에 전화드리겠습니다."; msg.className = "form-msg ok"; })
         .catch(function(){ msg.textContent = "전송하지 못했습니다. 전화로 문의해 주세요: {{TEL}}"; msg.className = "form-msg err"; })
         .finally(function(){ btn.disabled = false; });
