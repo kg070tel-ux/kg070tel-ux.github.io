@@ -24,7 +24,7 @@ window.HUB_DEMO = {
    "ext": "201",
    "peer": "031-855-2990",
    "name": "한빛상사",
-   "dur": 26,
+   "dur": 28,
    "staff": "김민지"
   },
   {
@@ -45,7 +45,7 @@ window.HUB_DEMO = {
    "ext": "204",
    "peer": "010-7784-1203",
    "name": "",
-   "dur": 18,
+   "dur": 19,
    "staff": "최현우"
   },
   {
@@ -56,7 +56,7 @@ window.HUB_DEMO = {
    "ext": "201",
    "peer": "02-578-3300",
    "name": "세움건축 구매팀",
-   "dur": 19,
+   "dur": 20,
    "staff": "김민지"
   },
   {
@@ -78,7 +78,7 @@ window.HUB_DEMO = {
    "ext": "202",
    "peer": "031-922-4410",
    "name": "그린마트",
-   "dur": 14,
+   "dur": 17,
    "staff": "이수진"
   },
   {
@@ -89,7 +89,7 @@ window.HUB_DEMO = {
    "ext": "204",
    "peer": "010-3398-7720",
    "name": "",
-   "dur": 15,
+   "dur": 16,
    "staff": "최현우"
   },
   {
@@ -100,7 +100,7 @@ window.HUB_DEMO = {
    "ext": "201",
    "peer": "02-6248-1190",
    "name": "",
-   "dur": 21,
+   "dur": 22,
    "staff": "김민지"
   },
   {
@@ -111,7 +111,7 @@ window.HUB_DEMO = {
    "ext": "203",
    "peer": "031-544-8800",
    "name": "우진택배",
-   "dur": 15,
+   "dur": 16,
    "staff": "박준호"
   },
   {
@@ -122,7 +122,7 @@ window.HUB_DEMO = {
    "ext": "202",
    "peer": "02-2287-0450",
    "name": "명성인쇄",
-   "dur": 14,
+   "dur": 16,
    "staff": "이수진"
   }
  ],
@@ -148,7 +148,7 @@ window.HUB_DEMO = {
    "peer": "031-855-2990",
    "name": "한빛상사",
    "note": "부재중 회신",
-   "dur": 18,
+   "dur": 19,
    "team": "영업1팀",
    "phoneNo": "010-2201-3302"
   },
@@ -197,7 +197,7 @@ window.HUB_DEMO = {
    "phone": "이 주임",
    "peer": "010-6623-0915",
    "name": "",
-   "dur": 14,
+   "dur": 16,
    "team": "TM팀",
    "phoneNo": "010-2201-3303"
   },
@@ -209,7 +209,7 @@ window.HUB_DEMO = {
    "phone": "박 대리",
    "peer": "010-5521-6042",
    "name": "대성물류 기사님",
-   "dur": 11,
+   "dur": 10,
    "team": "영업1팀",
    "phoneNo": "010-2201-3301"
   },
@@ -245,7 +245,7 @@ window.HUB_DEMO = {
    "phone": "이 주임",
    "peer": "010-8851-4420",
    "name": "",
-   "dur": 15,
+   "dur": 16,
    "team": "TM팀",
    "phoneNo": "010-2201-3303"
   }
