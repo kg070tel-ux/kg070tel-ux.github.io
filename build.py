@@ -82,7 +82,7 @@ def svc_cards(link_text="자세히 보기"):
     return "\n".join(out)
 
 
-PRODUCTS = ["통화녹음 (허브레코딩)", "허브레코딩 써보기 신청", "법인폰 관리 (허브모바일)", "허브모바일 써보기 신청", "법인폰 구매·개통", "인터넷·전화 (LG U+·SK·KT)",
+PRODUCTS = ["직접 작성", "통화녹음 (허브레코딩)", "허브레코딩 써보기 신청", "법인폰 관리 (허브모바일)", "허브모바일 써보기 신청", "법인폰 구매·개통", "인터넷·전화 (LG U+·SK·KT)",
             "보안 (UTM·PC 백신)", "랜공사·와이파이", "휴무 안내", "기타"]
 
 
@@ -98,6 +98,10 @@ def consult_form(pid, card=True):
           <select id="{pid}-time" name="time"><option>언제든 가능</option><option>오전 (09–12시)</option><option>오후 (13–18시)</option></select></div>
           <div><label for="{pid}-product">관심 상품</label>
           <select id="{pid}-product" name="product">{opts}</select></div>
+        </div>
+        <div class="memo-box">
+          <label for="{pid}-memo">요청 사항</label>
+          <textarea id="{pid}-memo" name="memo" rows="4" placeholder="예) 사무실 전화기 15대인데 녹음이 필요해요 / 인터넷이 자주 끊겨요 / 지금 통신사 약정이 곧 끝나요"></textarea>
         </div>
         <label class="agree"><input type="checkbox" name="agree"> 개인정보 수집·이용에 동의합니다 <a href="privacy.html" target="_blank">[보기]</a></label>
         <button type="submit" class="btn block">상담 예약하기</button>

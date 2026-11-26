@@ -673,3 +673,7 @@ table.cmp.ladder{min-width:560px}
 .gx-steps{margin-top:52px}.gx-steps li b{display:block;font-size:18px;margin-bottom:6px;color:var(--ink)}.gx-steps li span{color:var(--sub);font-size:15px}
 @media (max-width:960px){.gx-grid{grid-template-columns:repeat(3,1fr)}}
 @media (max-width:620px){.gx-grid{grid-template-columns:1fr 1fr;gap:10px}.gx-card{padding:14px 10px 16px}.gx-img{height:120px}.gx-img svg{height:100px}.gx-card h3{font-size:15.5px}}
+
+form.consult .memo-box[hidden]{display:none}
+form.consult textarea{width:100%;box-sizing:border-box;font:inherit;font-size:16px;padding:11px 12px;border:1px solid #d0d0d8;border-radius:var(--radius-s);background:#fff;color:var(--text);resize:vertical;min-height:96px}
+form.consult textarea:focus{outline:2px solid var(--brand);outline-offset:0;border-color:var(--brand)}
