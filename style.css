@@ -693,3 +693,4 @@ form.consult textarea:focus{outline:2px solid var(--brand);outline-offset:0;bord
 .equip{margin-top:26px}
 .equip table.cmp{max-width:760px}
 .equip td{text-align:center}
+.equip .sub{font-size:.82em;color:var(--muted,#888);margin-left:4px}
